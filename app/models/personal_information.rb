@@ -1,4 +1,4 @@
-class InfoPersonal < ActiveRecord::Base
+class PersonalInformation < ActiveRecord::Base
 	validates :nome, format: {with: /[A-z]/, on: :create}, presence: true 
    
   	before_save { self.email = email.downcase }

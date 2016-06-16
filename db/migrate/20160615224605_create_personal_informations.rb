@@ -1,6 +1,6 @@
-class CreateInfoPersonals < ActiveRecord::Migration
+class CreatePersonalInformations < ActiveRecord::Migration
   def change
-    create_table :info_personals do |t|
+    create_table :personal_informations do |t|
       t.string :nome
       t.string :email
       t.string :rg
