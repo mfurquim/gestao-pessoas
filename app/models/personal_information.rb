@@ -1,11 +1,16 @@
 class PersonalInformation < ActiveRecord::Base
-	validates :name, format: {with: /[A-z]/, on: :create}, presence: true 
-   
+
+    belongs_to :user
+
+    # Actions   
   	before_save { self.email.downcase! if not self.email.nil? }
-  	# Put format of email Zenit
+    
+    # Validations
   	validates :email, presence: true, format: {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/, on: :create}, uniqueness: {case_sensitive: false} 
     
-    validates :cpf, presence: true, length: {is:11}, format: {with: /[0-9]/, on: :create}, uniqueness: true
+    validates :cpf, presence: true, length: {is:11}, format: {with: /\A[0-9]+\Z/, on: :create}, uniqueness: true
 
-    validates :rg, presence: true, length: {is:7}, format: {with: /[0-9]/, on: :create}, uniqueness: true 
+	validates :name, format: {with: /[A-z]/, on: :create}, presence: true 
+
+    validates :rg, presence: true, length: {is:7}, format: {with: /\A[0-9]+\Z/, on: :create}, uniqueness: true 
 end
