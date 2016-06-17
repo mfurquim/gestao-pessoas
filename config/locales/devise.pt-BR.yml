@@ -41,6 +41,8 @@ pt-BR:
       update_needs_confirmation: 'Você atualizou a sua conta com sucesso, mas o seu novo endereço de e-mail precisa ser confirmado. Por favor, acesse-o e clique no link de confirmação que enviamos.'
       updated: 'Sua conta foi atualizada com sucesso.'
     sessions:
+      user:
+        already_signed_out: 'Você já não está mais logado'
       signed_in: 'Login efetuado com sucesso!'
       signed_out: 'Saiu com sucesso.'
     unlocks:
