@@ -42,4 +42,9 @@ RSpec.describe PersonalInformation, type: :model do
       should validate_uniqueness_of(:rg)
     end
   end
+  describe "Association " do
+    it "belongs to a user" do
+      should belong_to(:user)
+    end
+  end
 end
