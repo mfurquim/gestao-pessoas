@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "personal_informations/new", type: :view do
   before(:each) do
     assign(:personal_information, PersonalInformation.new(
-      :nome => "MyString",
+      :name => "MyString",
       :email => "MyString",
       :rg => "MyString",
       :cpf => "MyString"
@@ -15,7 +15,7 @@ RSpec.describe "personal_informations/new", type: :view do
 
     assert_select "form[action=?][method=?]", personal_informations_path, "post" do
 
-      assert_select "input#personal_information_nome[name=?]", "personal_information[nome]"
+      assert_select "input#personal_information_name[name=?]", "personal_information[name]"
 
       assert_select "input#personal_information_email[name=?]", "personal_information[email]"
 

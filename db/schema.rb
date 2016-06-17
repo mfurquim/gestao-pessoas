@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20160615224605) do
 
   create_table "personal_informations", force: :cascade do |t|
-    t.string   "nome"
+    t.string   "name"
     t.string   "email"
     t.string   "rg"
     t.string   "cpf"

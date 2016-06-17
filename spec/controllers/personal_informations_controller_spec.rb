@@ -24,11 +24,19 @@ RSpec.describe PersonalInformationsController, type: :controller do
   # PersonalInformation. As you add validations to PersonalInformation, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    {name: "My name",
+    email: "foo@mail.com",
+    rg: "1234567",
+    cpf: "12345678901"}
+#   skip("Add a hash of attributes valid for your model")
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    {name: "My name",
+    email: "invalid_email",
+    rg: "123456",
+    cpf: "1234567890"}
+#    skip("Add a hash of attributes invalid for your model")
   }
 
   # This should return the minimal set of values that should be in the session
@@ -103,14 +111,18 @@ RSpec.describe PersonalInformationsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        {name: "My name",
+        email: "foa@mail.com",
+        rg: "1234570",
+        cpf: "12345678902"}
       }
 
       it "updates the requested personal_information" do
         personal_information = PersonalInformation.create! valid_attributes
         put :update, {:id => personal_information.to_param, :personal_information => new_attributes}, valid_session
         personal_information.reload
-        skip("Add assertions for updated state")
+        expect(assigns(:personal_information)).to eql(personal_information)
+        #skip("Add assertions for updated state")
       end
 
       it "assigns the requested personal_information as @personal_information" do

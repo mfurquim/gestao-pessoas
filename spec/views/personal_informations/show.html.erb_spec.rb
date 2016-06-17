@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "personal_informations/show", type: :view do
   before(:each) do
-    @personal_information = assign(:personal_information, PersonalInformation.create!(
-      :nome => "Nome",
-      :email => "Email",
-      :rg => "Rg",
-      :cpf => "Cpf"
-    ))
+    @personal_information = FactoryGirl.create(:personal_information)
   end
 
   it "renders attributes in <p>" do

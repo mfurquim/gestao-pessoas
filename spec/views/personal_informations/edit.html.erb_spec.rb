@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "personal_informations/edit", type: :view do
   before(:each) do
-    @personal_information = assign(:personal_information, PersonalInformation.create!(
-      :nome => "MyString",
-      :email => "MyString",
-      :rg => "MyString",
-      :cpf => "MyString"
-    ))
+    @personal_information = FactoryGirl.create(:personal_information)
   end
 
   it "renders the edit personal_information form" do
@@ -15,7 +10,7 @@ RSpec.describe "personal_informations/edit", type: :view do
 
     assert_select "form[action=?][method=?]", personal_information_path(@personal_information), "post" do
 
-      assert_select "input#personal_information_nome[name=?]", "personal_information[nome]"
+      assert_select "input#personal_information_name[name=?]", "personal_information[name]"
 
       assert_select "input#personal_information_email[name=?]", "personal_information[email]"
 
