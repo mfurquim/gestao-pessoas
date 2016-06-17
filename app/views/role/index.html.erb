@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<% @roles_users.each do |role,users| %>
+    <h1><%= role %></h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Show</th>
+          <th>Edit</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% users.each do |user| %>
+          <tr>
+            <td><%= user.email %></td>
+
+            <td><%= link_to 'Show', user.personal_information %></td>
+            <td><%= link_to 'Edit', edit_user_role_path(user) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+<% end %>
+<%= link_to 'New Personal information', new_personal_information_path %>
+

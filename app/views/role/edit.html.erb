@@ -1,0 +1,9 @@
+
+<%= form_for(@user, url: edit_user_role_path(@user), html: { method: :put }) do |f| %>
+    <div class="fields">
+        <%= select_tag(:role,options_for_select(@roles)) %>
+    </div>
+    <div class="actions">
+        <%= f.submit "Change " %>
+    </div>
+<% end %>

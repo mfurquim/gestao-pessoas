@@ -12,6 +12,9 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+  get 'users/all' => 'role#index'
+  get 'user/:id/edit_role' => 'role#edit', as: :edit_user_role
+  put 'user/:id/edit_role' => 'role#update' 
 
   resources :personal_informations
   root 'devise/sessions#new'
