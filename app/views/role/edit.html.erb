@@ -1,8 +1,23 @@
 
 <%= form_for(@user, url: edit_user_role_path(@user), html: { method: :put }) do |f| %>
-    <div class="fields">
-        <%= select_tag(:role,options_for_select(@roles)) %>
-    </div>
+    <table>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Novo perfil</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= @user.email %></td>
+            <td>
+                <div class="fields">
+                    <%= select_tag(:role,options_for_select(@roles)) %>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+    </table>
     <div class="actions">
         <%= f.submit "Change " %>
     </div>

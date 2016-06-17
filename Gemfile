@@ -15,6 +15,8 @@ gem 'uglifier', '>= 1.3.0'
 
 # Authenticate gem Devise
 gem 'devise'
+# Profile administrator
+gem 'pundit'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

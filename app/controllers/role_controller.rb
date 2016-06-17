@@ -13,7 +13,11 @@ class RoleController < ApplicationController
     # GET /user/:id/role_edit
     def edit
       @user = User.where(id: params[:id]).first
-      @roles = Role.select(:id,:name).map { |role| [role.name,role.id]}
+
+      @roles = Role.select(:id,:name).map do |role|
+         role_name = "role."+role.name.to_s
+         [translate(role_name),role.id]
+      end
     end
 
     # PUT /user/:id/role_edit

@@ -1,4 +1,10 @@
 pt-BR:
+  role:
+    exclude: Excluidos
+    disable: Desligados
+    assessor: Assessores
+    personmanager: Gestor de Pessoas
+    administrator: Administrador
   activerecord:
     errors:
       messages:
