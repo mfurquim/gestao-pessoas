@@ -1,10 +1,19 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: [:sessions]
+  devise_for :users, skip: [:sessions,:registrations] 
 
   devise_scope :user do
     get '/login' => "devise/sessions#new", :as => :new_user_session
     post '/login' => "devise/sessions#create", :as => :user_session
     delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
+
+    get '/users/create_user' => 'users#new', :as => :new_registration
+    post '/users/create_user' => 'users#create', :as => :new_user_registration
+
+    get '/users/edit' => 'users/registrations#edit', :as => :edit_user_registration
+    patch '/users' => 'users/registrations#update'
+    put '/users' => 'users/registrations#update'
+    post '/users' => 'devise/registrations#create', :as => :user_registration
+
     authenticated :user do
       root 'personal_informations#index', as: :authenticated_root
     end
@@ -12,11 +21,12 @@ Rails.application.routes.draw do
       root 'devise/sessions#new', as: :unauthenticated_root
     end
   end
+
   get 'users/all' => 'role#index'
   get 'user/:id/edit_role' => 'role#edit', as: :edit_user_role
   put 'user/:id/edit_role' => 'role#update' 
 
-  resources :personal_informations
+  resources :personal_informations, only:[:index,:show,:edit,:update,:create,:new]
   root 'devise/sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.

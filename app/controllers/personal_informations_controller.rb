@@ -1,6 +1,6 @@
 class PersonalInformationsController < ApplicationController
-  before_action :set_personal_information, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_personal_information, only: [:show, :edit, :update]
+  before_filter :authenticate_user!
   # GET /personal_informations
   # GET /personal_informations.json
   def index
@@ -48,16 +48,6 @@ class PersonalInformationsController < ApplicationController
         format.html { render :edit }
         format.json { render json: @personal_information.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /personal_informations/1
-  # DELETE /personal_informations/1.json
-  def destroy
-    @personal_information.destroy
-    respond_to do |format|
-      format.html { redirect_to personal_informations_url, notice: 'Personal information was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

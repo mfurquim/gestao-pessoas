@@ -8,7 +8,7 @@
 
 Role.create(name:"exclude",description:"Excluidos")
 Role.create(name:"disable",description:"Desligados")
-Role.create(name:"assessor",description:"Assessores")
+Role.create(name:"assessor",description:"Assessores",default:true)
 Role.create(name:"personmanager",description:"Gestor de pessoas")
 
 admin_role = Role.create(name:"administrator",description:"Administrador do sistema")
