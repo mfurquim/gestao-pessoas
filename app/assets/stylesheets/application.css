@@ -13,6 +13,7 @@
  *= require devise_bootstrap_views
  *= require_tree .
  *= require_self
+
  */
 #login-dp{
     min-width: 250px;

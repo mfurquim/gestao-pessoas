@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', [current_user,@personal_information] %> |
-<%= link_to 'Back', root_path %>
+<%= button_to "Mostrar", [current_user,@personal_information],
+    :class => "success button", :method => :get %>
+<%= button_to "Voltar", root_path ,:class => "button",
+    :method => :get %>

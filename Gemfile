@@ -16,7 +16,6 @@ gem 'uglifier', '>= 1.3.0'
 # Bootstrap
 gem 'twitter-bootstrap-rails'
 gem 'devise-bootstrap-views'
-
 # Authenticate gem Devise
 gem 'devise'
 # Profile administrator
