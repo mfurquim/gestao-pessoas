@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   def render_404(exception)
+    puts "*"*100
+    puts exception.message
+    puts "*"*100
     render :file => Rails.root.to_s+"/public/404", status: 404
   end
 end

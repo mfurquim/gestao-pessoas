@@ -23,9 +23,10 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'users/all' => 'role#index'
-  get 'user/:id/edit_role' => 'role#edit', as: :edit_user_role
-  put 'user/:id/edit_role' => 'role#update' 
+  get 'users/all' => 'users#index'
+  get 'role/all' => 'role#index'
+  get 'role/:id/edit_role' => 'role#edit', as: :edit_user_role
+  put 'role/:id/edit_role' => 'role#update' 
 
   resources :user do
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]

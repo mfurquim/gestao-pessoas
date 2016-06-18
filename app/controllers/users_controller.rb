@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
+ 
+  # GET /users/all for see all users, not able to edit!
+  def index
+    excluded_role = Role.where(name:"exclude").first
+    @users = User.where.not(role: excluded_role)
+    authorize @users
+    render :index
+  end
   # GET /users/sign_up
   def new
     authorize User
@@ -13,7 +21,7 @@ class UsersController < ApplicationController
     @resource = User.new(email_params)
     if @resource.save
       flash[:notice] = "Usuário #{@resource.email} criado com sucesso. Senha padrão: #{email_params['password']}"
-      redirect_to users_all_url
+      redirect_to role_all_url
     else
       @resource.email=@email
       render :new

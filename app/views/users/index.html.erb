@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+<table>
+  <thead>
+  <tr>
+    <th>Email Zenit</th>
+    <th>Nome</th>
+    <th>Contato</th>
+    <th>Perfil</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <%if personal_information? user %>
+        <td><%= user.personal_information.name %></td>
+        <td> <%= user.personal_information.email %></td>
+      <% else %>
+        </td></td><td></td>
+      <% end %>
+      <td><%= link_to 'Ver perfil', [current_user,user.personal_information] %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+  <br>
+<% if @users.empty? %>
+  <h1> No users </h1>
+<% end %>

@@ -1,5 +1,8 @@
 class UserPolicy < ApplicationPolicy
- 
+  # Any profile can see
+  def index?
+    true
+  end
   # Define who can see users and they profiles
   def new?
     high_users
