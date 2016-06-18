@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     authorize User
     @resource = User.new(email_params)
     if @resource.save
-      render :text=>"the password"
+      render :text=> email_params["password"]
     else
       @resource.email=@email
       render :new
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
   # GET /users/myprofile
   def myprofile
     @user = current_user
-    authorize @user
+    authorize @user,:profile?
     render :profile
   end
   # Verify the params to get a user

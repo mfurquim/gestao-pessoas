@@ -12,9 +12,6 @@ class UserPolicy < ApplicationPolicy
   
   # Only exclude can't see the profile of others members 
   def profile?
-    true and not user.role? :exclude
-  end
-  def myprofile?
-    profile?
+    excluded_users 
   end
 end

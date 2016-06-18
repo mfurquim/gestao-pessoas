@@ -1,4 +1,4 @@
-class PersonalInformationsPolicy < ApplicationPolicy
+class PersonalInformationPolicy < ApplicationPolicy
  
   # Define who can see users and they profiles
   def new?
@@ -19,7 +19,7 @@ class PersonalInformationsPolicy < ApplicationPolicy
   end
 
   def user_or_high
-    high_users 
+    excluded_users 
   end
   private :user_or_high
 end

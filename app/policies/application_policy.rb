@@ -39,9 +39,12 @@ class ApplicationPolicy
   end
 
   def high_users
-    user.role?(:administrator) || user.role?(:personmanager)
+    user.role?(:administrator) or user.role?(:personmanager)
   end
-
+  
+  def excluded_users
+    (high_users or user.role?(:assessor) or user.role?(:disable)) and not user.role?(:exclude)
+  end
   class Scope
     attr_reader :user, :scope
 
@@ -54,5 +57,5 @@ class ApplicationPolicy
       scope
     end
   end
-  protected :high_users
+  protected :high_users, :excluded_users
 end

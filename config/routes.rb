@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, skip: [:sessions,:registrations] 
+  devise_for :users, :path => "accounts", skip: [:sessions,:registrations] 
 
   devise_scope :user do
     get '/login' => "devise/sessions#new", :as => :new_user_session
@@ -27,7 +27,9 @@ Rails.application.routes.draw do
   get 'user/:id/edit_role' => 'role#edit', as: :edit_user_role
   put 'user/:id/edit_role' => 'role#update' 
 
-  resources :personal_informations, only:[:index,:show,:edit,:update,:create,:new]
+  resources :user do
+    resources :personal_informations, only:[:show,:edit,:update,:create,:new]
+  end
   root 'devise/sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
