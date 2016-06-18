@@ -11,23 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+   <div class="row">
+      <div class="medium-6 columns">
+      <div class="column">
+        <img class="thumbnail" src="http://placehold.it/250x250">
+      </div>
+        <ul class="menu">
+      <input type="file" id="myFile">
+        </ul>
+      </div>
+      <div class="medium-6 columns">
+        <div class="field">
+          <%= f.label :name %><br>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label :email %><br>
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+          <%= f.label :rg %><br>
+          <%= f.text_field :rg %>
+        </div>
+        <div class="field">
+          <%= f.label :cpf %><br>
+          <%= f.text_field :cpf %>
+        </div>
+        <div class="actions">
+          <%= f.submit %>
+        </div>  
+      </p>  
+        </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :rg %><br>
-    <%= f.text_field :rg %>
-  </div>
-  <div class="field">
-    <%= f.label :cpf %><br>
-    <%= f.text_field :cpf %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+ 
 <% end %>
+

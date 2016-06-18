@@ -1,4 +1,4 @@
-<h2>Sign up</h2>
+<center><h2>Cadastrar-se</h2></center>
 
 
 <%= form_for(@resource, url: new_registration_path) do |f| %>
@@ -13,13 +13,22 @@
         <% end %>
     </ul></div>
   <% end %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true %>@zenitaerospace.com
+  <div class="row">
+    <div class="small-6 large-centered columns">
+     <div class="login-box">
+          <%= f.label :email %>
+      <div class="input-group">
+        <div class="field">
+          <%= f.text_field :email, autofocus: true %>
+        </div>
+        <span class="input-group-label">@zenitaerospace.com</span>
+      </div>
+          <div class="buttons">
+            <%= f.submit %>
+          </div>
+    </div>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  
 <% end %>
 

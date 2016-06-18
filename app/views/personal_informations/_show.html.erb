@@ -1,24 +1,46 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Nome:</strong>
-  <%= @personal_information.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @personal_information.email %>
-</p>
-
-<p>
-  <strong>Rg:</strong>
-  <%= @personal_information.rg %>
-</p>
-
-<p>
-  <strong>Cpf:</strong>
-  <%= @personal_information.cpf %>
-</p>
-
-<%= link_to 'Edit',  edit_user_personal_information_path(current_user,@personal_information) %> |
-<%= link_to 'Back', root_path %>
+  <div class="row">
+    <div class="medium-6 columns">
+    <div class="column">
+      <img class="thumbnail" src="http://placehold.it/250x250">
+    </div>
+  	  <ul class="menu">
+		<input type="file" id="myFile">
+      </ul>
+    </div>
+    <div class="medium-6 columns">
+      <p>
+      	<label>
+      		<strong>Name:</strong>
+        	<%= @personal_information.name %>
+      	</label>
+      </p>
+      <hr>
+      <p>
+      	<label>
+      		<strong>Email:</strong> 
+      		<%= @personal_information.email %>
+      	</label>
+      </p>
+      <hr>
+      <p>
+      	<label>
+      		<strong>RG: </strong>  
+      		<%= @personal_information.rg %>
+      	</label>
+      </p>
+      <hr>
+      <p>	
+	    <label>
+	     	<strong>CPF: </strong>
+			<%= @personal_information.cpf %>
+	    </label>	
+	  </p> 	
+      </div>
+	<div class="medium-7 large-6 columns">
+		    <%= button_to "Editar", edit_user_personal_information_path(current_user,@personal_information),
+		    :class => "success button", :method => :get %>
+		    <%= button_to "Voltar", root_path ,:class => "button",
+			:method => :get %>
+ 	</div>
+  </div>
