@@ -1,6 +1,5 @@
 <h2>Sign up</h2>
 
-
 <%= form_for(@resource, url: new_registration_path) do |f| %>
   <% if not @resource.errors.empty? %>
     <div id="error_explanation">
@@ -13,10 +12,11 @@
         <% end %>
     </ul></div>
   <% end %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email, autofocus: true %>@zenitaerospace.com
-  </div>
+<label for="basic-url">Email novo:</label>
+<div class="input-group">
+  <%= f.text_field :email, autofocus: true %>
+  <span class="input-group-addon" id="basic-addon3">@zenitaerospace.com</span>
+</div>
 
   <div class="actions">
     <%= f.submit %>
