@@ -38,6 +38,10 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def high_users
+    user.role?(:administrator) || user.role?(:personmanager)
+  end
+
   class Scope
     attr_reader :user, :scope
 
@@ -50,4 +54,5 @@ class ApplicationPolicy
       scope
     end
   end
+  protected :high_users
 end

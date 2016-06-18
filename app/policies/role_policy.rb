@@ -1,6 +1,9 @@
 class RolePolicy < ApplicationPolicy
   # Define who can see users and they profiles
   def index?
+    puts "*"*100
+    puts high_users
+    puts "*"*100
     high_users
   end
 
@@ -14,9 +17,4 @@ class RolePolicy < ApplicationPolicy
     high_users
   end
 
-  def high_users
-    user.role?(:administrator) || user.role?(:personmanager)
-  end
-
-  private :high_users
 end

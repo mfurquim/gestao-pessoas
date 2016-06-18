@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
     get '/users/create_user' => 'users#new', :as => :new_registration
     post '/users/create_user' => 'users#create', :as => :new_user_registration
+    get 'user/:id' => 'users#profile', constraints: {id: /\d+/}
 
     get '/users/edit' => 'users/registrations#edit', :as => :edit_user_registration
     patch '/users' => 'users/registrations#update'
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
     post '/users' => 'devise/registrations#create', :as => :user_registration
 
     authenticated :user do
-      root 'personal_informations#index', as: :authenticated_root
+      root 'users#myprofile', as: :authenticated_root
     end
     unauthenticated do
       root 'devise/sessions#new', as: :unauthenticated_root
