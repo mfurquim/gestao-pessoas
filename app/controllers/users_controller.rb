@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     authorize User
     @resource = User.new(email_params)
     if @resource.save
-      render :text=> email_params["password"]
+      flash[:notice] = "Usuário #{@resource.email} criado com sucesso. Senha padrão: #{email_params['password']}"
+      redirect_to users_all_url
     else
       @resource.email=@email
       render :new

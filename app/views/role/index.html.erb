@@ -1,5 +1,4 @@
 <p id="notice"><%= notice %></p>
-
 <% @roles_users.each do |role,users| %>
     <h1><%= translate("role."+role) %></h1>
 
@@ -17,7 +16,7 @@
           <tr>
             <td><%= user.email %></td>
 
-            <td><%= link_to 'Show', user.personal_information %></td>
+            <td><%= link_to 'Show', [current_user,user.personal_information] %></td>
             <td><%= link_to 'Edit', edit_user_role_path(user) %></td>
           </tr>
         <% end %>
@@ -26,5 +25,6 @@
 
     <br>
 <% end %>
-<%= link_to 'New Personal information', new_personal_information_path %>
-
+<% if @roles_users.empty? %>
+  <h1> No users </h1>
+<% end %>
