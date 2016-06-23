@@ -17,10 +17,7 @@ class RoleController < ApplicationController
     authorize Role
     @user = User.where(id: params[:id]).first
 
-    @roles = Role.select(:id,:name).map do |role|
-       role_name = "role."+role.name.to_s
-       [translate(role_name),role.id]
-    end
+    @roles = roles
   end
 
   # PUT /user/:id/role_edit
@@ -36,4 +33,9 @@ class RoleController < ApplicationController
     end
   end 
 
+  def roles
+    role = Role.new
+    roles = role.member_roles
+  end
+  private :roles
 end

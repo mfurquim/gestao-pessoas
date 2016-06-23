@@ -64,6 +64,7 @@
             <ul class="nav navbar-nav">
                 <li><%= link_to 'Todos membros', users_all_path %></li>
                 <% if policy(current_user).create? %>
+                    <li><%= link_to 'Adicionar membros', new_registration_path %></li>'
                     <li><%= link_to 'Gerênciar perfis', role_all_path %></li>
                 <% end %>
 

@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/sign_up
   def new
     authorize User
+    @roles = Role.new.member_roles
     @resource = User.new
   end
 
@@ -19,6 +20,7 @@ class UsersController < ApplicationController
   def create
     authorize User
     @resource = User.new(email_params)
+    puts email_params
     if @resource.save
       flash[:notice] = "Usuário #{@resource.email} criado com sucesso. Senha padrão: #{email_params['password']}"
       redirect_to role_all_url
@@ -58,7 +60,7 @@ class UsersController < ApplicationController
     @email=resource_attributes["email"]
     resource_attributes["email"]+="@zenitaerospace.com"
     resource_attributes["password"] = "ZenitAerospace"
-    resource_attributes["role"] = Role.where(default: true).first
+    resource_attributes["role"] = Role.where(id: params[:role]).first
     resource_attributes
   end
 

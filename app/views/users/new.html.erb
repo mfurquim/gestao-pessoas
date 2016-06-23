@@ -17,6 +17,10 @@
   <%= f.text_field :email, autofocus: true %>
   <span class="input-group-addon" id="basic-addon3">@zenitaerospace.com</span>
 </div>
+  <span>Permissão de acesso</span>
+    <div class="fields">
+        <%= select_tag(:role,options_for_select(@roles)) %>
+    </div>
 
   <div class="actions">
     <%= f.submit %>
