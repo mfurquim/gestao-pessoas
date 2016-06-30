@@ -10,9 +10,9 @@ Rails.application.routes.draw do
     post '/users/create_user' => 'users#create', :as => :new_user_registration
     get 'user/:id' => 'users#profile', constraints: {id: /\d+/}
 
-    get '/users/edit' => 'users/registrations#edit', :as => :edit_user_registration
-    patch '/users' => 'users/registrations#update'
-    put '/users' => 'users/registrations#update'
+    get '/users/edit' => 'devise/registrations#edit', :as => :edit_user_registration
+    patch '/users' => 'devise/registrations#update'
+    put '/users' => 'devise/registrations#update'
     post '/users' => 'devise/registrations#create', :as => :user_registration
 
     authenticated :user do

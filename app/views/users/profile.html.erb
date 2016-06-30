@@ -1,11 +1,14 @@
 <h1>Perfil do usuário</h1>
-<p> 
-    <label>
-        <strong>Email Zenit:</strong>
-        <%= @user.email %>
-    </label>
-</p>
-
+<hr>
+<div class="medium-6 columns">
+    <p> 
+        <label>
+            <strong>Email Zenit:</strong>
+            <%= @user.email %>
+        </label>
+    </p>
+</div>
+<hr>
 <% if not @user.personal_information.nil? %>
 
     <% @personal_information=@user.personal_information  %>

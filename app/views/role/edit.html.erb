@@ -1,18 +1,23 @@
-<h1>Modificar perfil</h1>
-<%= form_for(@user, url: edit_user_role_path(@user), html: { method: :put, role: "form", class: "form-horizontal" } ) do |f| %>
-    <div class="form-group">
-        <label for="email" >Email Zenit:</label>
-        <input class="form_control" id="email" disabled value="<%= @user.email %>"></input>
-    </div>
-    <div class="form-group">
-        <label for="actual_role" >Perfil atual:</label>
-        <input class="form_control" id="actual_role" disabled value="<%= I18n.t('.role.'+@user.role.name) %>"></input> 
-    </div>
-    <div class="form_group">
-        <label for="role" >Novo perfil: </label>
-        <%= select_tag(:role,options_for_select(@roles),
-                        {class: "form-control"}) %>
-    </div>
-    <br>
-    <%= f.submit("Modificar",{class:"btn btn-default"}) %>
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Modificar perfil</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for(@user, url: edit_user_role_path(@user), html: { method: :put, role: "form", class: "form-horizontal" } ) do |f| %>
+        <div class="form-group">
+            <label for="email" >Email Zenit:</label>
+            <input class="form_control" id="email" disabled value="<%= @user.email %>"></input>
+        </div>
+        <div class="form-group">
+            <label for="actual_role" >Perfil atual:</label>
+            <input class="form_control" id="actual_role" disabled value="<%= I18n.t('.role.'+@user.role.name) %>"></input> 
+        </div>
+        <div class="form_group">
+            <label for="role" >Novo perfil: </label>
+            <%= select_tag(:role,options_for_select(@roles),
+                            {class: "form-control"}) %>
+        </div>
+        <%= f.submit("Modificar",{class:"btn btn-primary"}) %>
+    <% end %>
+  </div>
+</div>

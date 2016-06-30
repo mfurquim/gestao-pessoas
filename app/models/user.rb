@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  validates :email, presence: true, format: {with: /\A([^@\s]+)@zenitaerospace.com\Z/, on: :create}
+  validates :email, presence: true, format: {with: /\A([^@\s]+)@zenitaerospace.com\Z/}
 
   belongs_to :role
   has_one :personal_information

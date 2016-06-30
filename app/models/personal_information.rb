@@ -12,6 +12,7 @@ class PersonalInformation < ActiveRecord::Base
 
   validates :name, format: {with: /[A-z]/, on: :create}, presence: true 
 
-  validates :rg, presence: true, length: {is:7}, format: {with: /\A[0-9]+\Z/, on: :create}, uniqueness: true 
- 
+  validates :rg, presence: true, length: {is:7}, format: {with: /\A[0-9]+\Z/}, uniqueness: true 
+
+  validates :phone_number, format: {with: /(\(\d{1,2}\)\d{4,5}-\d{4}\z)|\A\Z/}, presence: false
 end

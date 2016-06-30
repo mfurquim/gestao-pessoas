@@ -10,6 +10,7 @@ class PersonalInformationsController < ApplicationController
   # GET /personal_informations/new
   def new
     @personal_information = PersonalInformation.new
+    set_user
     authorize @personal_information
   end
 
@@ -54,11 +55,14 @@ class PersonalInformationsController < ApplicationController
     def set_personal_information
       @personal_information = PersonalInformation.find(params[:id])
     end
-
+    def set_user
+      @user = User.find(params[:user_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def personal_information_params
-      params_attributes = params.require(:personal_information).permit(:name, :email, :rg, :cpf)
+      params_attributes = params.require(:personal_information).permit(:name, :email, :rg, :cpf,:phone_number)
       params_attributes[:user_id]=params[:user_id]
+      puts params_attributes
       params_attributes
     end
 end

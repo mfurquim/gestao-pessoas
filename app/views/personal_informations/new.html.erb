@@ -1,5 +1,9 @@
-<h1>New Personal Information</h1>
-
-<%= render 'form' %>
-
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Inserir informações pessoais</h4>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
 <%= button_to "Voltar", root_path ,:class => "button", :method => :get %>
