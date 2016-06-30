@@ -1,5 +1,11 @@
-User profile
-<%= @user.email %><br>
+<h1>Perfil do usuário</h1>
+<p> 
+    <label>
+        <strong>Email Zenit:</strong>
+        <%= @user.email %>
+    </label>
+</p>
+
 <% if not @user.personal_information.nil? %>
 
     <% @personal_information=@user.personal_information  %>
@@ -7,6 +13,6 @@ User profile
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 
-    <%= link_to "Add", new_user_personal_information_path(@user) %>
+    <%= link_to "Adicionar", new_user_personal_information_path(@user) %>
 
 <% end %>

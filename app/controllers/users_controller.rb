@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   # GET /users/all for see all users, not able to edit!
   def index
     excluded_role = Role.where(name:"exclude").first
-    @users = User.where.not("role_id != ? or email != ?", excluded_role,"admin@zenitaerospace.com")
+    @users = User.where.not(role: excluded_role,email:"admin@zenitaerospace.com")
     authorize @users
     render :index
   end

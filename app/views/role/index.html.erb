@@ -1,13 +1,12 @@
-<p id="notice"><%= notice %></p>
 <% @roles_users.each do |role,users| %>
     <h1><%= translate("role."+role) %></h1>
 
-    <table>
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>Email</th>
-          <th>Show</th>
-          <th>Edit</th>
+          <th>Ver Perfil</th>
+          <th>Editar</th>
         </tr>
       </thead>
 
@@ -16,8 +15,8 @@
           <tr>
             <td><%= user.email %></td>
 
-            <td><%= link_to 'Show', [current_user,user.personal_information] %></td>
-            <td><%= link_to 'Edit', edit_user_role_path(user) %></td>
+            <td><%= link_to 'Perfil', [user,user.personal_information] %></td>
+            <td><%= link_to 'Modificar', edit_user_role_path(user) %></td>
           </tr>
         <% end %>
       </tbody>

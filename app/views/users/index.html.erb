@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-<table>
+<table class="table table-hover">
   <thead>
   <tr>
     <th>Email Zenit</th>
@@ -16,9 +15,9 @@
         <td><%= user.personal_information.name %></td>
         <td> <%= user.personal_information.email %></td>
       <% else %>
-        </td></td><td></td>
+        <td>Não possui</td><td>Não possui</td>
       <% end %>
-      <td><%= link_to 'Ver perfil', [current_user,user.personal_information] %></td>
+      <td><%= link_to 'Ver perfil', [user,user.personal_information] %></td>
     </tr>
   <% end %>
   </tbody>
