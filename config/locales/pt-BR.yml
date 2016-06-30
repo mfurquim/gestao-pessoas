@@ -5,6 +5,8 @@ pt-BR:
     assessor: Assessores
     personmanager: Gestor de Pessoas
     administrator: Administrador
+    messages:
+        change_role: 'Perfil foi alterado com sucesso'
   activerecord:
     errors:
       messages:

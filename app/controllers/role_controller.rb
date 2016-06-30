@@ -27,6 +27,7 @@ class RoleController < ApplicationController
     user = User.where(id:params[:id]).first
     user.role_id = params[:role]
     if user.update(role_id:params[:role])
+        flash[:notice] = I18n.t(".role.messages.change_role")
       redirect_to action: "index"
     else
       render :edit

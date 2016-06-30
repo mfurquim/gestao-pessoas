@@ -26,6 +26,7 @@ class UsersController < ApplicationController
       redirect_to role_all_url
     else
       @resource.email=@email
+      @roles = Role.new.member_roles
       render :new
     end
   end
@@ -64,5 +65,5 @@ class UsersController < ApplicationController
     resource_attributes
   end
 
-  private :email_params
+  private :email_params, :id_params
 end

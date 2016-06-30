@@ -1,30 +1,31 @@
-<center><h2>Cadastrar novo membro</h2></center>
-
-<%= form_for(@resource, url: new_registration_path) do |f| %>
-  <% if not @resource.errors.empty? %>
-    <div id="error_explanation">
-    <h2><%=  I18n.t("errors.messages.not_saved",
-             count: @resource.errors.count,
-            resource: @resource.class.model_name.human.downcase) %></h2>
-    <ul>
+<h2>Cadastrar novo membro</h2>
+<%= form_for(@resource, url: new_registration_path, html: {role: "form", class: "form-horizontal"}) do |f| %>
+    <% if not @resource.errors.empty? %>
+       <!-- <h2><%=  I18n.t("errors.messages.not_saved",
+            count: @resource.errors.count,
+            resource: @resource.class.model_name.human.downcase) %></h2> -->
         <% @resource.errors.full_messages.each  do |text| %>
-            <li><%= text %></li>
+            <div class="alert alert-error alert-danger"> <button type="button"
+                class="close" data-dismiss="alert">×</button>
+                <%= text %>
+            </div>
         <% end %>
-    </ul></div>
-  <% end %>
-<label for="basic-url">Email novo:</label>
-<div class="input-group">
-  <%= f.text_field :email, autofocus: true %>
-  <span class="input-group-addon" id="basic-addon3">@zenitaerospace.com</span>
-</div>
-  <span>Permissão de acesso</span>
-    <div class="fields">
-        <%= select_tag(:role,options_for_select(@roles)) %>
+    <% end %>
+    <div class="form-group">
+        <label for="email" class="control-label col-sm-3 left">Email novo:</label>
+        <div class="col-sm-6">
+            <%= f.text_field :email, autofocus: true, class: "form-control" %>
+        </div>
+        <span class="input-group-addon" id="basic-addon3">@zenitaerospace.com</span>
+    </div>
+    <div class="form-group">
+        <label for="role" class="control-label col-sm-3">Permissão de acesso</label>
+        <div class="col-sm-6">
+            <%= select_tag(:role,options_for_select(@roles), {class:"form-control"}) %>
+        </div>
     </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+    <%= f.submit({class: "btn btn-default col-sm-2"})  %>
   
 <% end %>
 

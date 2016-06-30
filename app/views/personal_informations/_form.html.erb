@@ -1,17 +1,18 @@
-<%= form_for [current_user,@personal_information] do |f| %>
+<%= form_for [current_user,@personal_information], role: "form" do |f| %>
   <% if @personal_information.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@personal_information.errors.count, "error") %> prohibited this personal_information from being saved:</h2>
-
+    <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+      <h2><%= pluralize(@personal_information.errors.count, "erro") %> 
+              impediu de alterar as informações:</h2>
       <ul>
-      <% @personal_information.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+          <% @personal_information.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
       </ul>
     </div>
   <% end %>
 
-   <div class="row">
+   <div class="form-group">
  <!--     <div class="medium-6 columns">
       <div class="column">
         <img class="thumbnail" src="http://placehold.it/250x250">
@@ -20,26 +21,22 @@
       <input type="file" id="myFile">
         </ul>
       </div> -->
-      <div class="medium-6 columns">
-        <div class="field">
-          <%= f.label :name %><br>
-          <%= f.text_field :name %>
-        </div>
-        <div class="field">
-          <%= f.label :email %><br>
-          <%= f.text_field :email %>
-        </div>
-        <div class="field">
-          <%= f.label :rg %><br>
-          <%= f.text_field :rg %>
-        </div>
-        <div class="field">
-          <%= f.label :cpf %><br>
-          <%= f.text_field :cpf %>
-        </div>
-        <div class="actions">
-          <%= f.submit %>
-        </div>  
+          <%= f.label :name %>:
+          <%= f.text_field :name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: "form-control" %>
+    </div>
+    <div class="form-group">
+          <%= f.label :rg %>
+          <%= f.text_field :rg, class: "form-control", placeholder: "0000000" %>
+    </div>
+    <div class="form-group">
+          <%= f.label :cpf %>
+          <%= f.text_field :cpf, class: "form-control" %>
+    </div>
+          <%= f.submit({class: "btn btn-default"}) %>
       </p>  
         </div>
   </div>

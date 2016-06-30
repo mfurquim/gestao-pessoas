@@ -25,7 +25,7 @@ class PersonalInformationsController < ApplicationController
     authorize @personal_information
     respond_to do |format|
       if @personal_information.save
-        format.html { redirect_to [current_user,@personal_information], notice: 'Personal information was successfully created.' }
+        format.html { redirect_to [current_user,@personal_information], notice: 'Informação pessoal criada.' }
         format.json { render :show, status: :created, location: @personal_information }
       else
         format.html { render :new }
@@ -40,7 +40,7 @@ class PersonalInformationsController < ApplicationController
     authorize @personal_information
     respond_to do |format|
       if @personal_information.update(personal_information_params)
-        format.html { redirect_to [current_user,@personal_information], notice: 'Personal information was successfully updated.' }
+        format.html { redirect_to [current_user,@personal_information], notice: 'Informação pessoal atualizada.' }
         format.json { render :show, status: :ok, location: @personal_information }
       else
         format.html { render :edit }
