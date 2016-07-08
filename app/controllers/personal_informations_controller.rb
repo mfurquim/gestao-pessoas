@@ -16,6 +16,7 @@ class PersonalInformationsController < ApplicationController
 
   # GET /personal_informations/1/edit
   def edit
+    set_user
     authorize @personal_information
   end
 
@@ -26,9 +27,11 @@ class PersonalInformationsController < ApplicationController
     authorize @personal_information
     respond_to do |format|
       if @personal_information.save
+          puts @personal_information.user_id
         format.html { redirect_to [current_user,@personal_information], notice: 'Informação pessoal criada.' }
         format.json { render :show, status: :created, location: @personal_information }
       else
+        set_user
         format.html { render :new }
         format.json { render json: @personal_information.errors, status: :unprocessable_entity }
       end
@@ -44,6 +47,7 @@ class PersonalInformationsController < ApplicationController
         format.html { redirect_to [current_user,@personal_information], notice: 'Informação pessoal atualizada.' }
         format.json { render :show, status: :ok, location: @personal_information }
       else
+        set_user
         format.html { render :edit }
         format.json { render json: @personal_information.errors, status: :unprocessable_entity }
       end

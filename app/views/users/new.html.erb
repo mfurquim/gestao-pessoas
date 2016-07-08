@@ -1,7 +1,6 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4>Cadastrar novo membro</h4>
-    <%= form_for(@resource, url: new_registration_path, html: {role: "form", class: "form-horizontal"}) do |f| %>
       </div>
       <div class="panel-body">
         <% if not @resource.errors.empty? %>
@@ -15,6 +14,7 @@
                 </div>
             <% end %>
         <% end %>
+    <%= form_for(@resource, url: new_registration_path, html: {role: "form", class: "form-horizontal"}) do |f| %>
         <div class="form-group">
             <label for="email" class="control-label col-sm-3 left">Email novo:</label>
             <div class="col-sm-6">
