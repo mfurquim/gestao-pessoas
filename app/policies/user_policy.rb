@@ -1,8 +1,10 @@
+# Verify permitions to users data manipulation
 class UserPolicy < ApplicationPolicy
   # Any profile can see
   def index?
-    true
+    excluded_users
   end
+
   # Define who can see users and they profiles
   def new?
     high_users
@@ -12,9 +14,9 @@ class UserPolicy < ApplicationPolicy
   def create?
     high_users
   end
-  
-  # Only exclude can't see the profile of others members 
+
+  # Only exclude can't see the profile of others members
   def profile?
-    excluded_users 
+    excluded_users
   end
 end

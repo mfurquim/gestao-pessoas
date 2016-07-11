@@ -1,37 +1,32 @@
 Rails.application.routes.draw do
-  devise_for :users, :path => "accounts", skip: [:sessions,:registrations] 
+  devise_for :users, :path => "accounts",
+    controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      }
 
   devise_scope :user do
-    get '/login' => "devise/sessions#new", :as => :new_user_session
-    post '/login' => "users/sessions#create", :as => :user_session
-    delete "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
-
-    get '/users/create_user' => 'users#new', :as => :new_registration
-    post '/users/create_user' => 'users#create', :as => :new_user_registration
-    get 'user/:id' => 'users#profile', constraints: {id: /\d+/}
-
-    get '/users/edit' => 'devise/registrations#edit', :as => :edit_user_registration
-    patch '/users' => 'devise/registrations#update'
-    put '/users' => 'devise/registrations#update'
-    post '/users' => 'devise/registrations#create', :as => :user_registration
-
     authenticated :user do
       root 'users#myprofile', as: :authenticated_root
     end
     unauthenticated do
-      root 'devise/sessions#new', as: :unauthenticated_root
+      root 'users/sessions#new', as: :unauthenticated_root
     end
   end
 
-  get 'users/all' => 'users#index'
-  get 'role/all' => 'role#index'
-  get 'role/:id/edit_role' => 'role#edit', as: :edit_user_role
-  put 'role/:id/edit_role' => 'role#update' 
-
-  resources :user do
+  resources :roles, only: [:index]
+  #get 'role/all' => 'role#index'
+  #get 'role/:id/edit_role' => 'role#edit', as: :edit_user_role
+  #put 'role/:id/edit_role' => 'role#update' 
+  
+  get 'users/:id' => 'users#profile', as: :user
+  resources :users, only: [:index] do
+    get 'edit_role' => 'roles#edit'
+    post 'edit_role' => 'roles#update' 
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
   end
-  root 'devise/sessions#new'
+  root 'users/sessions#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

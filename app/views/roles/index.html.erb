@@ -26,7 +26,7 @@
                     <td><%= user.email %></td>
 
                     <td><%= link_to 'Perfil', [user,user.personal_information] %></td>
-                    <td><%= link_to 'Modificar', edit_user_role_path(user) %></td>
+                    <td><%= link_to 'Modificar', user_edit_role_path(user) %></td>
 <!--                    <td><%= link_to 'Modificar', edit_user_registration_path(user) %></td>-->
                   </tr>
                 <% end %>

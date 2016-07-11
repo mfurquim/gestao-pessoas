@@ -8,43 +8,67 @@
     </div> -->
     <div class="medium-6 columns">
       <p>
-      	<label>
+        <%= image_tag @information.image.url(:small) %>
+      </p>
+      <p>
+        <label>
       		<strong>Name:</strong>
-        	<%= @personal_information.name %>
+        	<%= @information.name %>
       	</label>
+      </p>
+      <hr>
+      <p>
+        <label>
+          <strong>Idade:</strong>
+          <%= @information.age %>
+        </label>
       </p>
       <hr>
       <p>
       	<label>
       		<strong>Email:</strong> 
-      		<%= @personal_information.email %>
+      		<%= @information.email %>
       	</label>
       </p>
       <hr>
       <p>
-      	<label>
-      		<strong>Número celular:</strong> 
-      		<%= @personal_information.phone_number %>
-      	</label>
+        <label>
+          <strong>Número celular:</strong> 
+          <%= @information.phone_number %>
+        </label>
       </p>
       <hr>
-      <% if see_edit? @personal_information.user %>
+      <p>
+        <label>
+          <strong>Data de aniversário:</strong>
+          <%= @information.birthday %>
+        </label>
+      </p>
+      <hr>
+      <p>
+        <label>
+          <strong>Endereço:</strong>
+          <%= @information.address %>
+        </label>
+      </p>
+      <hr>
+      <% if see_edit? @information.user %>
           <p>
             <label>
                 <strong>RG: </strong>  
-                <%= @personal_information.rg %>
+                <%= @information.rg %>
             </label>
           </p>
           <hr>
           <p>	
             <label>
                 <strong>CPF: </strong>
-                <%= @personal_information.cpf %>
-            </label>	
+                <%= @information.cpf %>
+            </label>
           </p> 	
           </div>
         <div class="medium-7 large-6 columns">
-                <%= button_to "Editar", edit_user_personal_information_path(current_user,@personal_information),
+                <%= button_to "Editar", edit_user_personal_information_path(@information.user,@information),
                 :class => "btn btn-default", :method => :get %>
                <!-- <%= button_to "Voltar", root_path ,:class => "button",
                 :method => :get %> -->

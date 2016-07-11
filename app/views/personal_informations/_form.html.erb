@@ -1,11 +1,11 @@
-<%= form_for [@user,@personal_information], role: "form" do |f| %>
-  <% if @personal_information.errors.any? %>
+<%= form_for [@user,@information], role: "form", html: { multipart: true } do |f| %>
+  <% if @information.errors.any? %>
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
-      <h2><%= pluralize(@personal_information.errors.count, "erro") %> 
+      <h2><%= pluralize(@information.errors.count, "erro") %> 
               impediu de alterar as informações:</h2>
       <ul>
-          <% @personal_information.errors.full_messages.each do |message| %>
+          <% @information.errors.full_messages.each do |message| %>
             <li><%= message %></li>
           <% end %>
       </ul>
@@ -20,25 +20,37 @@
       <input type="file" id="myFile">
         </ul>
       </div> -->
-   <div class="form-group">
-        <%= f.label :name %>:
-        <%= f.text_field :name, class: "form-control" %>
+    <div class="form-group">
+      <%= f.label :name %>:
+      <%= f.text_field :name, class: "form-control" %>
     </div>
     <div class="form-group">
-        <%= f.label :email %>:
-        <%= f.text_field :email, class: "form-control" %>
+      <%= f.label :email %>:
+      <%= f.text_field :email, class: "form-control" %>
     </div>
     <div class="form-group">
-        <%= f.label :rg %>:
-        <%= f.text_field :rg, class: "form-control", placeholder: "0000000" %>
+      <%= f.label :rg %>:
+      <%= f.text_field :rg, class: "form-control", placeholder: "0000000" %>
     </div>
     <div class="form-group">
-        <%= f.label :cpf %>:
-        <%= f.text_field :cpf, class: "form-control", placeholder: "00000000000" %>
+      <%= f.label :cpf %>:
+      <%= f.text_field :cpf, class: "form-control", placeholder: "00000000000" %>
     </div>
     <div class="form-group">
-        *<%= f.label :phone_number %>:
-         <%= f.text_field :phone_number, class: "form-control", placeholder: "(00)00000-0000" %>
+      *<%= f.label :birthday %>:
+      <%= f.date_field :birthday, class: "form-control", placeholder: "dd/mm/aaaa"  %>
+    </div>
+    <div class="form-group">
+      *<%= f.label :phone_number %>:
+      <%= f.text_field :phone_number, class: "form-control", placeholder: "(00)00000-0000" %>
+    </div>
+    <div class="form-group">
+      *<%= f.label :address %>:
+      <%= f.text_field :address, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :image %>
+      <%= f.file_field :image, class: 'form-control'%>
     </div>
     <%= f.submit({class: "btn btn-primary"}) %>
     </p>  

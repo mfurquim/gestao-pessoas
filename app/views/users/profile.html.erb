@@ -11,7 +11,7 @@
 <hr>
 <% if not @user.personal_information.nil? %>
 
-    <% @personal_information=@user.personal_information  %>
+    <% @information=@user.personal_information  %>
     <%= render :partial => 'personal_informations/show' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>

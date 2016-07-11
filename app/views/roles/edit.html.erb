@@ -3,7 +3,7 @@
     <h4>Modificar perfil</h4>
   </div>
   <div class="panel-body">
-    <%= form_for(@user, url: edit_user_role_path(@user), html: { method: :put, role: "form", class: "form-horizontal" } ) do |f| %>
+    <%= form_for(@user, url: user_edit_role_path(@user), html: { method: :post, role: "form", class: "form-horizontal" } ) do |f| %>
         <div class="form-group">
             <label for="email" >Email Zenit:</label>
             <input class="form_control" id="email" disabled value="<%= @user.email %>"></input>

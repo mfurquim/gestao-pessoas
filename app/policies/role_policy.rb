@@ -1,3 +1,4 @@
+# Verify permissions to roles manipulation
 class RolePolicy < ApplicationPolicy
   # Define who can see users and they profiles
   def index?
@@ -13,5 +14,4 @@ class RolePolicy < ApplicationPolicy
   def update?
     high_users
   end
-
 end

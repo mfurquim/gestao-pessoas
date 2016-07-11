@@ -1,3 +1,4 @@
+# Principal policy to inheritance
 class ApplicationPolicy
   attr_reader :user, :record
 
@@ -11,7 +12,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(id: record.id).exists?
   end
 
   def create?
@@ -39,12 +40,14 @@ class ApplicationPolicy
   end
 
   def high_users
-    user.role?(:administrator) or user.role?(:personmanager)
+    !user.nil? && (user.role?(:administrator) || user.role?(:personmanager))
   end
-  
+
   def excluded_users
-    (high_users or user.role?(:assessor) or user.role?(:disable)) and not user.role?(:exclude)
+    able_user = high_users || user.role?(:assessor) || user.role?(:disable)
+    able_user && !user.role?(:exclude)
   end
+  # Private class to scope the permitions
   class Scope
     attr_reader :user, :scope
 
