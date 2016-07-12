@@ -49,8 +49,12 @@
       <%= f.text_field :address, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :image %>
-      <%= f.file_field :image, class: 'form-control'%>
+      <%= f.label :image, class: 'btn btn-default btn-file' %>
+      <div class='input-group'>
+        <%= f.file_field :image, class: 'form-control', style: 'display: none;'%>
+        <span class='input-group-addon' id='image-name'>Nenhuma imagem selecionada</span>
+      </div>
+      <div class="alert alert-danger" id='error-image' style='display: none;' role="alert" ></div>
     </div>
     <%= f.submit({class: "btn btn-primary"}) %>
     </p>  

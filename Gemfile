@@ -17,7 +17,6 @@ gem 'therubyracer', platforms: :ruby
 
 # Bootstrap
 gem 'twitter-bootstrap-rails'
-gem 'devise-bootstrap-views'
 
 # Authenticate gem Devise
 gem 'devise'
