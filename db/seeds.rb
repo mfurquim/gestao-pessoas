@@ -6,14 +6,32 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Role.create(name:"exclude",description:"Excluidos")
-Role.create(name:"disable",description:"Desligados")
-Role.create(name:"assessor",description:"Assessores",default:true)
-Role.create(name:"personmanager",description:"Gestor de pessoas")
+assessor_role = Role.create(name:"assessor",description:"Assessores",default:true)
+personmanager_role = Role.create(name:"personmanager",description:"Gestor de pessoas")
+disable_role = Role.create(name:"disable",description:"Desligados")
+exclude_role = Role.create(name:"exclude",description:"Excluidos")
+
+roles = [assessor_role,personmanager_role,disable_role,exclude_role]
+password_load = YAML.load_file(Rails.root.to_s+"/config/secrets.yml")
 
 admin_role = Role.create(name:"administrator",description:"Administrador do sistema")
 require 'yaml'
-password_load = YAML.load_file(Rails.root.to_s+"/config/secrets.yml")
 User.create(email:"admin@zenitaerospace.com",
             password:password_load["user_admin"]["password"],
             role:admin_role)
+
+
+NAME = %w[ Artur Marcelo Eduarda Ana ]
+SURNAMES = %w[ Bersan Ferreira Martins ]
+print "Create users: "
+for name in NAME
+  for surname in SURNAMES
+    full_name = [name, surname].join(' ')
+    email = full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')+"@zenitaerospace.com"
+    user = User.create(email:email,
+                       password:password_load["user_admin"]["password"],
+                       role:roles.sample)
+    print "."
+  end
+end
+print "\n"
