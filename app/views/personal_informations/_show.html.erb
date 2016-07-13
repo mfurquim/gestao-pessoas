@@ -1,76 +1,47 @@
-  <!--  <div class="medium-6 columns">
-    <div class="column">
-      <img class="thumbnail" src="http://placehold.it/250x250">
-    </div>
-  	  <ul class="menu">
-		<input type="file" id="myFile">
-      </ul>
-    </div> -->
-    <div class="medium-6 columns">
-      <p>
-        <%= image_tag @information.image.url(:small) %>
-      </p>
-      <p>
-        <label>
-      		<strong>Name:</strong>
-        	<%= @information.name %>
-      	</label>
-      </p>
-      <hr>
-      <p>
-        <label>
-          <strong>Idade:</strong>
-          <%= @information.age %>
-        </label>
-      </p>
-      <hr>
-      <p>
-      	<label>
-      		<strong>Email:</strong> 
-      		<%= @information.email %>
-      	</label>
-      </p>
-      <hr>
-      <p>
-        <label>
-          <strong>Número celular:</strong> 
+<div class="row">
+  <p class="col-sm-4">
+    <%= image_tag @information.image.url(:small), height: 250, width: 150, style: 'border: 1px solid; border-radius: 2px;' %>
+  </p>
+  <ul class="col-sm-8 info-group">
+      <li class='info-group-item'>
+        <label>Name:</label>
+        <%= @information.name %>
+      </li>
+      <li class='info-group-item'>
+        <label>Idade:</label>
+        <%= @information.age %>
+      </li>
+      <li class='info-group-item'>
+        <label>Email:</label>
+          <%= @information.email %>
+      </li>
+      <li class='info-group-item'>
+        <label>Número celular:</label>
           <%= @information.phone_number %>
-        </label>
-      </p>
-      <hr>
-      <p>
-        <label>
-          <strong>Data de aniversário:</strong>
+      </li>
+      <li class='info-group-item'>
+        <label>Data de aniversário:</label>
           <%= @information.birthday %>
-        </label>
-      </p>
-      <hr>
-      <p>
-        <label>
-          <strong>Endereço:</strong>
+      </li>
+      <li class='info-group-item'>
+        <label>Endereço:</label>
           <%= @information.address %>
-        </label>
-      </p>
-      <hr>
+      </li>
       <% if see_edit? @information.user %>
-          <p>
-            <label>
-                <strong>RG: </strong>  
-                <%= @information.rg %>
-            </label>
-          </p>
-          <hr>
-          <p>	
-            <label>
-                <strong>CPF: </strong>
-                <%= @information.cpf %>
-            </label>
-          </p> 	
-          </div>
-        <div class="medium-7 large-6 columns">
-                <%= button_to "Editar", edit_user_personal_information_path(@information.user,@information),
-                :class => "btn btn-default", :method => :get %>
-               <!-- <%= button_to "Voltar", root_path ,:class => "button",
-                :method => :get %> -->
-        </div>
-    <% end %>
+        <li class='info-group-item'>
+          <label>RG:</label>
+            <%= @information.rg %>
+        </li>
+        <li class='info-group-item'>  
+          <label>CPF:</label>
+            <%= @information.cpf %>
+        </li>
+      <% end %>
+  </ul>
+</div>
+<div class="row">
+<div class="col-sm-6">
+<%= button_to "Editar", edit_user_personal_information_path(@information.user,@information), :class => "btn btn-default", :method => :get %>
+<!--<%= button_to "Voltar", root_path ,:class => "button", :method => :get %> -->
+</div>
+</div>

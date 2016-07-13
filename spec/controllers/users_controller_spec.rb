@@ -1,13 +1,15 @@
 require 'rails_helper'
-
+require 'wice_grid'
 RSpec.describe UsersController, type: :controller do
   describe 'GET #index ' do
     it 'assing the users' do
+      include Wice::Controller
       user = FactoryGirl.create(:user)
       user2 = FactoryGirl.create(:user_with_role)
       sign_in user
       get :index, {}
-      expect(assigns(:users).to_a).to eql([user, user2])
+      expect(assigns(:users)).to_not be_nil
+      expect(assigns(:users).status).to eql({"per_page"=>20, "page"=>1, "conditions"=>nil, "f"=>nil})
     end
     it ' render index' do
       user = FactoryGirl.create(:user)

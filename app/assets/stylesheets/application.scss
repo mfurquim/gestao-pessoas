@@ -14,6 +14,10 @@
  *= require_self
 
  */
+@import "wice_grid";
+@import "font-awesome-sprockets";
+@import "font-awesome"; 
+
 a, a:hover,a:active,a:visited{
   text-decoration: none;
   cursor: pointer;

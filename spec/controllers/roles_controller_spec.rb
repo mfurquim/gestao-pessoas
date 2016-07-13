@@ -6,7 +6,7 @@ RSpec.describe RolesController, type: :controller do
       user = FactoryGirl.create(:user_with_role)
       sign_in user
       get :index, {}
-      expect(assigns(:roles_users)).to eq('administrator' => [user])
+      expect(assigns(:roles_users)).to include('all')
     end
   end
 

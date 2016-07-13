@@ -1,29 +1,22 @@
 <% unless @users.empty? %>
-<table class="table table-hover">
-  <thead>
-  <tr>
-    <th>Email Zenit</th>
-    <th>Nome</th>
-    <th>Contato</th>
-    <th>Perfil</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @users.each do |user| %>
-    <tr>
-      <td><%= user.email %></td>
-      <%if personal_information? user %>
-        <td><%= user.personal_information.name %></td>
-        <td> <%= user.personal_information.email %></td>
-      <% else %>
-        <td>Não possui</td><td>Não possui</td>
-      <% end %>
-      <td><%= link_to 'Ver perfil', user %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-  <br>
+<%= grid(@users, show_filters: :when_filtered) do |user_grid|
+  
+  user_grid.blank_slate  do
+    "Nenhum registro"
+  end
+  user_grid.column name: 'Email zenit', attribute: 'email' do |user|
+    user.email
+  end
+  user_grid.column name: 'Nome', assoc: :personal_information, attribute: 'name' do |user|
+    user.personal_information.nil? ? 'Não possui' : user.personal_information.name
+  end
+  user_grid.column name: 'Número de telefone', assoc: :personal_information, attribute: 'phone_number' do |user|
+    user.personal_information.nil? ? 'Não possui' : user.personal_information.phone_number
+  end
+  user_grid.column name: 'Perfil' do |user|
+    link_to( 'Ver perfil', user )
+  end
+end %>
 <% else %>
   <h1> Nenhum registro </h1>
 <% end %>

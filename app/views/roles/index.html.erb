@@ -1,37 +1,28 @@
 <ul class="nav nav-tabs">
-<% first = true %>
 <% @roles_users.each do |role,users| %>
-    <li <%= 'class="active"' if first %>><a data-toggle="tab" href="#<%= role %>"><%= translate("role."+role) %></a></li>
-    <% first = false %>
+    <li <%= 'class="active"' if role == 'all' %>  ><a data-toggle="tab" href="#<%= role %>"><%= translate("role."+role) %></a>
+    </li>
+    
 <% end %>
 </ul>
-<% first = true %>
 <div class="tab-content">
 <% @roles_users.each do |role,users| %>
-    <div id="<%= role %>" class="tab-pane fade <%= 'in active' if first %>">
-    <% first = false %>
-        <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th>Email</th>
-                  <th>Ver Perfil</th>
-                  <th>Permissões</th>
-<!--                  <th>Perfil</th> -->
-                </tr>
-              </thead>
-
-              <tbody>
-                <% users.each do |user| %>
-                  <tr>
-                    <td><%= user.email %></td>
-
-                    <td><%= link_to 'Perfil', [user,user.personal_information] %></td>
-                    <td><%= link_to 'Modificar', user_edit_role_path(user) %></td>
-<!--                    <td><%= link_to 'Modificar', edit_user_registration_path(user) %></td>-->
-                  </tr>
-                <% end %>
-              </tbody>
-            </table>
+    <div id="<%= role %>" class="tab-pane <%= 'in active' if role == 'all' %> ">
+      <%= grid(users, show_filters: :when_filtered) do |user_grid|
+        user_grid.blank_slate do
+          '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
+        end
+        user_grid.column name: 'Email zenit', attribute: 'email' do |user|
+          user.email
+        end
+        user_grid.column name: 'Ver perfil' do |user|
+          link_to 'Perfil', [user,user.personal_information]
+        end
+        user_grid.column name: 'Permissões' do |user|
+          link_to 'Modificar', user_edit_role_path(user)
+        end
+  
+      end %>
     </div>
 <% end %>
 </div>

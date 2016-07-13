@@ -7,9 +7,15 @@ class RolesController < ApplicationController
   def index
     authorize Role
     @roles_users = {}
-    User.where("email != 'admin@zenitaerospace.com'").each do |user|
-      @roles_users[user.role.name] = [] if @roles_users[user.role.name].nil?
-      @roles_users[user.role.name] << user
+    @roles_users['all'] = initialize_grid(
+      User.where("email != 'admin@zenitaerospace.com'"),name:'all'
+    )
+    Role.all.each do |role|
+      @roles_users[role.name] = initialize_grid(
+        User.where(
+          "email != 'admin@zenitaerospace.com' and role_id = ?", role.id),
+           name: role.name
+      )
     end
   end
 
