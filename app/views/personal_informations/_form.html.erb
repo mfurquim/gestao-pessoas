@@ -2,8 +2,7 @@
   <% if @information.errors.any? %>
     <div class="alert alert-danger">
         <button type="button" class="close" data-dismiss="alert">×</button>
-      <h2><%= pluralize(@information.errors.count, "erro") %> 
-              impediu de alterar as informações:</h2>
+      <h2>Não foi possível alterar as infomações. <%= pluralize(@information.errors.count, "erro") %>:</h2>
       <ul>
           <% @information.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -60,7 +59,7 @@
     </div>
     <div class="col-xs-12 alert alert-danger" id='error-image' style='display: none;' role="alert" ></div>
     <%= f.submit({class: "btn btn-primary"}) %>
-    </p>  
- 
+    </p>
+
 <% end %>
 
