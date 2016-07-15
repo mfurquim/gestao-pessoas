@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :subjects
   devise_for :users, :path => "accounts",
     controllers: {
       sessions: 'users/sessions',
@@ -18,8 +19,8 @@ Rails.application.routes.draw do
   resources :roles, only: [:index]
   #get 'role/all' => 'role#index'
   #get 'role/:id/edit_role' => 'role#edit', as: :edit_user_role
-  #put 'role/:id/edit_role' => 'role#update' 
-  
+  #put 'role/:id/edit_role' => 'role#update'
+
   get 'users/:id' => 'users#profile', as: :user
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
