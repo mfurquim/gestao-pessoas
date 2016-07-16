@@ -29,7 +29,7 @@ gem 'sass-rails', '~> 5.0'
 
 # Use bootstrap for layout
 gem 'twitter-bootstrap-rails'
-
+gem 'bootstrap-sass'
 # Use for create paginations and tables instead of data tables
 gem 'wice_grid'
 gem 'font-awesome-sass'

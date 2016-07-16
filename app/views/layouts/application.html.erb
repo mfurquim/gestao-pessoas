@@ -42,7 +42,8 @@
     </header>
     <main>
       <div class='container' id='content'>
-          <%= yield %>
+        <%= render 'layouts/flash_message' %>
+        <%= yield %>
       </div> 
     </main>
   </body>

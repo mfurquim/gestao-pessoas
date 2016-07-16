@@ -9,6 +9,10 @@ pt-BR:
         change_role: 'Perfil foi alterado com sucesso'
   activerecord:
     errors:
+      models:
+        user:
+          email:
+            format: 'formato invalido'
       messages:
         record_invalid: 'A validação falhou: %{errors}'
         restrict_dependent_destroy:

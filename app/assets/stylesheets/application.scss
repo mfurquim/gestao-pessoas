@@ -10,13 +10,16 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
 
  */
 @import "wice_grid";
 @import "font-awesome-sprockets";
 @import "font-awesome"; 
+
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+@import '*';
 
 a, a:hover,a:active,a:visited{
   text-decoration: none;
@@ -36,3 +39,4 @@ a, a:hover,a:active,a:visited{
     min-width: 320px;
   }
 }
+

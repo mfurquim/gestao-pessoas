@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, presence: true,
-                    format: { with: /\A([^@\s]+)@zenitaerospace.com\Z/ }
+                    format: { with: /\A([^@\s]+)@zenitaerospace.com\Z/,
+                              message: I18n.t('activerecord.errors.models.'+
+                                              'user.email.format') }
   validates :role, presence: true
   belongs_to :role
   has_one :personal_information

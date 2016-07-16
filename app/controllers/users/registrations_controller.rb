@@ -11,10 +11,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     authorize User
     @user = User.new(email_params)
     if @user.save
-      flash[:notice] = "Usuário #{@user.email} criado com sucesso."\
+      flash[:success] = "Usuário #{@user.email} criado com sucesso."\
                        " Senha padrão: #{email_params['password']}"
       redirect_to roles_url
-    else      
+    else
       set_users
       render :new
     end

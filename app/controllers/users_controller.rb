@@ -7,7 +7,15 @@ class UsersController < ApplicationController
   def index
     excluded_role = Role.where(name: 'exclude').first
     @users = initialize_grid(User.where.not(role: excluded_role,
-                             email: 'admin@zenitaerospace.com'))
+                             email: 'admin@zenitaerospace.com'),
+                            order: 'personal_informations.name', 
+                            custom_order: {
+                               'personal_informations.name' => 
+                               'COALESCE(?,"Não possui")',
+                               'personal_informations.phone_number' =>
+                               'COALESCE(?,"Não possui")'
+                             })
+
  #   authorize User
     render :index
   end
