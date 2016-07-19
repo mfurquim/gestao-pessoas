@@ -1,0 +1,98 @@
+.nav-side-menu {
+  position: fixed;
+  display: block;
+  width: 240px;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  overflow-x: hidden;
+  padding-top: 50px;
+  transition: 0.3s;
+  background: #082c62;
+  text-align: center;
+  z-index: 4;
+}
+
+.nav-side-menu img {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.nav-side-menu ul li {
+  width: 100%;
+  font-size: 20px;
+  height: 50px;
+  color: white;
+}
+
+a.menu_logout:hover.menu_logout{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #de2950;
+  color: black;
+}
+a.menu_logout, a.menu_logout:active, a.menu_logout:visited{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: #de2950;
+}
+
+a.menu:hover.menu{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: white;
+  color: #082c62;
+}
+
+a.menu, a.menu:active, a.menu:visited{
+  text-decoration: none;
+  cursor: pointer;
+  background-color: transparent;
+  color: white;
+}
+
+.nav-side-menu ul li:after{
+  content: '';
+  margin-left: 20px;
+  margin-right: 20px;
+  border-bottom: solid;
+  color: #de2950;
+  border-bottom-width: 2px;
+  display: block;
+}
+
+#nav-side-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0,0,0,0.7);
+  z-index: 3;
+  display: none;
+}
+
+#nav-side-menu-mobile {
+  display: none;
+  background: #082c62;
+  height: 50px;
+  color: white;
+  min-width: 300px;
+}
+#nav-side-menu-mobile i{
+  margin-left: 30px;
+  margin-top: 15px;
+}
+#nav-side-menu-mobile h2{
+  position: relative;
+  float: right;
+}
+@media screen and (max-width: 900px){
+  .nav-side-menu {
+    width: 0;
+  }
+  #nav-side-menu-mobile {
+    display: block;
+  }
+}

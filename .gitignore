@@ -7,7 +7,10 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore coverage
+coverage/
 # Ignore the default SQLite database.
+/db/schema.rb
 /db/*.sqlite3
 /db/*.sqlite3-journal
 
@@ -15,3 +18,8 @@
 /log/*
 !/log/.keep
 /tmp
+*.swp
+*~
+
+# public assets
+/public/assets/*

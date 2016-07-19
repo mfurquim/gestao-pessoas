@@ -1,0 +1,23 @@
+<% unless @users.empty? %>
+<input hidden value="haha"></input>
+<%= grid(@users, show_filters: :when_filtered) do |user_grid|
+  
+  user_grid.blank_slate  do
+    "Nenhum registro"
+  end
+  user_grid.column name: 'Email zenit', attribute: 'email' do |user|
+    user.email
+  end
+  user_grid.column name: 'Nome', negation: true, assoc: :personal_information, attribute: 'name' do |user|
+    user.personal_information.nil? ? 'Não possui' : user.personal_information.name
+  end
+  user_grid.column name: 'Número de telefone', assoc: :personal_information, attribute: 'phone_number' do |user|
+    user.personal_information.nil? ? 'Não possui' : user.personal_information.phone_number
+  end
+  user_grid.column name: 'Perfil' do |user|
+    link_to( 'Ver perfil', user )
+  end
+end %>
+<% else %>
+  <h1> Nenhum registro </h1>
+<% end %>

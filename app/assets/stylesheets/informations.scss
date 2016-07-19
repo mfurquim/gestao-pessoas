@@ -1,0 +1,26 @@
+.info-title h1{
+  text-align: center;
+  border-bottom: 1px solid red;
+  margin-bottom: 30px;
+}
+.info-group {
+  text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  list-style-type: none;
+}
+.info-group-item {
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.info-group-item{
+  border-bottom: 1px solid lightgray;
+}
+.info-group-item:last-child {
+  border-bottom-width: 0px;
+}
+
+.info-group-item label{
+  width: 35%;
+}

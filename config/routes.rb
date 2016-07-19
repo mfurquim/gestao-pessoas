@@ -1,5 +1,34 @@
 Rails.application.routes.draw do
-  resources :info_personals
+  resources :subjects
+  devise_for :users, :path => "accounts",
+    controllers: {
+      sessions: 'users/sessions',
+      registrations: 'users/registrations',
+      passwords: 'users/passwords',
+      }
+
+  devise_scope :user do
+    authenticated :user do
+      root 'users#myprofile', as: :authenticated_root
+    end
+    unauthenticated do
+      root 'users/sessions#new', as: :unauthenticated_root
+    end
+  end
+
+  resources :roles, only: [:index]
+  #get 'role/all' => 'role#index'
+  #get 'role/:id/edit_role' => 'role#edit', as: :edit_user_role
+  #put 'role/:id/edit_role' => 'role#update'
+
+  get 'users/:id' => 'users#profile', as: :user
+  resources :users, only: [:index] do
+    get 'edit_role' => 'roles#edit'
+    post 'edit_role' => 'roles#update' 
+    resources :personal_informations, only:[:show,:edit,:update,:create,:new]
+  end
+  root 'users/sessions#new'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

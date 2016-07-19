@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="nav-side-menu">
+    <%= link_to  image_tag('logo_zenit.png', height:150, widt:150), 'http://www.zenitaerospace.com/' %>
+    <ul class="nav nav-pills">
+      <% if user_signed_in? %>
+        <li><%= link_to 'Meu perfil', root_path, class: 'a menu' %></li>
+        <li><%= link_to 'Todos membros', users_path, class: 'a menu' %></li>
+        <% if policy(current_user).create? %>
+          <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>
+          <li><%= link_to 'Cadastrar disciplina', subjects_path %></li>
+          <li><%= link_to 'Gerênciar perfis', roles_path(role: 'all') %></li>
+        <% end %>
+        <li><%= link_to 'Editar conta', edit_user_registration_path, class: 'a menu' %></li>
+        <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' , class: 'a menu_logout' %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div id='nav-side-menu-mobile' onclick='show_side_menu()'>
+    <i class='fa fa-bars fa-2x'></i>
+    <h2>Zenit Aerospace</h2>
+  </div>
+  <div id='nav-side-overlay' onclick='hide_side_menu()'></div>
+</nav>
+<script>
+  function show_side_menu(){
+    $('.nav-side-menu').css('width',240);
+    $('#nav-side-overlay').show();
+  }
+  function hide_side_menu(){
+    $('.nav-side-menu').css('width','');
+    $('#nav-side-overlay').hide();
+  }
+</script>
