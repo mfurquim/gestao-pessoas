@@ -4,6 +4,11 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'capybara/rails'
+
+# To code climat coverage
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 # Set of methods to validate presences
 require 'shoulda/matchers'
 

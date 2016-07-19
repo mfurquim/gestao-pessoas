@@ -10,7 +10,6 @@ class RolesController < ApplicationController
     @roles << 'all'
     @actual_role = params[:role]
     @role_users = initialize_grid(grid_active_record(@actual_role))
-    puts @role_users.class
   end
 
   # GET /user/:user_id/role_edit
