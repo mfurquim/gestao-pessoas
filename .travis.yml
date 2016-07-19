@@ -1,5 +1,11 @@
 before_script:
   - bundle exec rake db:migrate RAILS_ENV=test
+
+branches:
+  only:
+  - master
+  - develop
+
 addons:
   code_climate:
     repo_token: a87c36225345cd75f1be6a24cc3ffdec4461d603c9f92ff98a80c19af8f81fa7

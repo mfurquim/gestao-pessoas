@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/ZenitAerospace/gestao-pessoas.svg?branch=development)](https://travis-ci.org/ZenitAerospace/gestao-pessoas)
+[![Build Status](https://travis-ci.org/ZenitAerospace/gestao-pessoas.svg?branch=master)](https://travis-ci.org/ZenitAerospace/gestao-pessoas)
 [![Code Climate](https://codeclimate.com/github/ZenitAerospace/gestao-pessoas/badges/gpa.svg)](https://codeclimate.com/github/ZenitAerospace/gestao-pessoas)
 [![Test Coverage](https://codeclimate.com/github/ZenitAerospace/gestao-pessoas/badges/coverage.svg)](https://codeclimate.com/github/ZenitAerospace/gestao-pessoas/coverage)
 
