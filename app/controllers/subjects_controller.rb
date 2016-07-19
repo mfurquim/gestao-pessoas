@@ -1,12 +1,14 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_user!
+  after_action :verify_authorized
 
   # GET /subjects
   # GET /subjects.json
   def index
     @subjects = Subject.all
     authorize @subjects
+    @subject_grid = initialize_grid(@subjects)
   end
 
   # GET /subjects/1
