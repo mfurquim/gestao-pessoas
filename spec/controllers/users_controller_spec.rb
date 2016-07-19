@@ -9,7 +9,12 @@ RSpec.describe UsersController, type: :controller do
       sign_in user
       get :index, {}
       expect(assigns(:users)).to_not be_nil
-      expect(assigns(:users).status).to eql({"per_page"=>20, "page"=>1, "conditions"=>nil, "f"=>nil})
+      expect(assigns(:users).status).to eql(
+        {"per_page"=>20, "page"=>1,
+         "conditions"=>nil, "f"=>nil,
+        "order" => "personal_informations.name",
+        "order_direction" => "asc"
+      })
     end
     it ' render index' do
       user = FactoryGirl.create(:user)

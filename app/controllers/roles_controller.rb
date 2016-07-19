@@ -3,20 +3,14 @@ class RolesController < ApplicationController
   before_filter :authenticate_user!
   after_action :verify_authorized
 
-  # GET /users/all
+  # GET /roles/
   def index
     authorize Role
-    @roles_users = {}
-    @roles_users['all'] = initialize_grid(
-      User.where("email != 'admin@zenitaerospace.com'"),name:'all'
-    )
-    Role.all.each do |role|
-      @roles_users[role.name] = initialize_grid(
-        User.where(
-          "email != 'admin@zenitaerospace.com' and role_id = ?", role.id),
-           name: role.name
-      )
-    end
+    @roles = Role.select(:name).map {|role| role.name}
+    @roles << 'all'
+    @actual_role = params[:role]
+    @role_users = initialize_grid(grid_active_record(@actual_role))
+    puts @role_users.class
   end
 
   # GET /user/:user_id/role_edit
@@ -43,5 +37,16 @@ class RolesController < ApplicationController
     role = Role.new
     role.member_roles
   end
-  private :roles
+  def grid_active_record(role_name)
+    if role_name.to_s != 'all'
+      role = Role.where(name: role_name)
+      raise ActiveRecord::RecordNotFound.new("Role don't found"+
+        " with name #{role_name}") if role.first.nil?
+      User.where(
+        "email != 'admin@zenitaerospace.com' and role_id = ?",role.first.id )
+    else
+      User.where("email != 'admin@zenitaerospace.com'")
+    end
+  end
+  private :roles, :grid_active_record
 end

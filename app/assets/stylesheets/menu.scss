@@ -8,9 +8,9 @@
   overflow-x: hidden;
   padding-top: 50px;
   transition: 0.3s;
-  z-index: 2;
   background: #082c62;
   text-align: center;
+  z-index: 4;
 }
 
 .nav-side-menu img {
@@ -69,7 +69,7 @@ a.menu, a.menu:active, a.menu:visited{
   bottom: 0;
   right: 0;
   background-color: rgba(0,0,0,0.7);
-  z-index: 1;
+  z-index: 3;
   display: none;
 }
 
