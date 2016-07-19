@@ -1,5 +1,6 @@
 class SubjectsController < ApplicationController
   before_action :set_subject, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!
 
   # GET /subjects
   # GET /subjects.json
@@ -15,6 +16,7 @@ class SubjectsController < ApplicationController
   # GET /subjects/new
   def new
     @subject = Subject.new
+    authorize @subject
   end
 
   # GET /subjects/1/edit

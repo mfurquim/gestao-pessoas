@@ -6,8 +6,9 @@
         <li><%= link_to 'Meu perfil', root_path, class: 'a menu' %></li>
         <li><%= link_to 'Todos membros', users_path, class: 'a menu' %></li>
         <% if policy(current_user).create? %>
-          <li><%= link_to 'Adicionar membros', new_user_registration_path, class: 'a menu' %></li>
-          <li><%= link_to 'Gerênciar perfis', roles_path, class: 'a menu' %></li>
+          <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>
+          <li><%= link_to 'Cadastrar disciplina', subjects_path %></li>
+          <li><%= link_to 'Gerênciar perfis', roles_path %></li>
         <% end %>
         <li><%= link_to 'Editar conta', edit_user_registration_path, class: 'a menu' %></li>
         <li><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' , class: 'a menu_logout' %></li>
