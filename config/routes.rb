@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :activities
   resources :subjects
   devise_for :users, :path => "accounts",
     controllers: {
@@ -28,6 +29,9 @@ Rails.application.routes.draw do
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
   end
   root 'users/sessions#new'
+
+  # Activities path.
+  get 'activities' => 'activities#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
