@@ -5,6 +5,7 @@
       <% if user_signed_in? %>
         <li><%= link_to 'Meu perfil', root_path, class: 'a menu' %></li>
         <li><%= link_to 'Todos membros', users_path, class: 'a menu' %></li>
+        <li><%= link_to 'Todas atividades', activities_path, class: 'a menu' %></li>
         <% if policy(current_user).create? %>
           <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>
           <li><%= link_to 'Adicionar atividades', new_activity_path %></li>

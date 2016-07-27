@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   root 'users/sessions#new'
 
   # Activities path.
-  get 'activities' => 'activities#new'
+  get 'activities' => 'activities#index'
+  get 'new_activity' => 'activities#new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
