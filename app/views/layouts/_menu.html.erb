@@ -7,6 +7,7 @@
         <li><%= link_to 'Todos membros', users_path, class: 'a menu' %></li>
         <% if policy(current_user).create? %>
           <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>
+          <li><%= link_to 'Adicionar atividades', new_activity_path %></li>
           <li><%= link_to 'Disciplinas', subjects_path %></li>
           <li><%= link_to 'Gerênciar perfis', roles_path(role: 'all') %></li>
         <% end %>
