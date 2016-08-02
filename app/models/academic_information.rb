@@ -6,11 +6,9 @@ validates :registration, presence: true, format:
   		  uniqueness: { case_sensitive: false }
 
 validates :input_semester_year, presence: true, format:
-		  { with: /((01)|(02))\/(20)([0-9]{2})/ },
-  		  uniqueness: { case_sensitive: false }
+		  { with: /((01)|(02))\/(20)([0-9]{2})/ }
 
 validates :current_semester_year, presence: true, format:
-		  { with: /((01)|(02))\/(20)([0-9]{2})/ },
-  		  uniqueness: { case_sensitive: false }
+		  { with: /((01)|(02))\/(20)([0-9]{2})/ }
 
 end

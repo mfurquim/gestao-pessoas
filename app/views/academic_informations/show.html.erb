@@ -17,7 +17,5 @@
       </li>
   </ul>
 </div>
-
-<%= link_to 'Edit', edit_academic_information_path(@academic_information) %> |
-<%= link_to 'Back', academic_informations_path %>
+<%= button_to "Editar", edit_user_personal_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
 </div>

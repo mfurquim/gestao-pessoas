@@ -17,5 +17,6 @@
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 
     <%= link_to "Adicionar", new_user_personal_information_path(@user) %>
+    <%= link_to "Adicionar Acad", new_user_academic_information_path(@user) %>
 
 <% end %>
