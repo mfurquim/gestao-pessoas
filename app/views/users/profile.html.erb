@@ -16,7 +16,19 @@
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 
-    <%= link_to "Adicionar", new_user_personal_information_path(@user) %>
-    <%= link_to "Adicionar Acad", new_user_academic_information_path(@user) %>
+    <%= button_to "Adicionar informações pessoais", 
+        new_user_personal_information_path(@user), :class => "btn btn-default",
+        :method => :get %>
+<% end %>
 
+<% if not @user.academic_information.nil? %>
+
+    <% @academic_information=@user.academic_information  %>
+    <%= render :partial => 'academic_informations/show' %>
+
+<% elsif @user.eql? current_user or policy(current_user).create?%>
+
+    <%= button_to "Adicionar informações acadêmicas", 
+        new_user_academic_information_path(@user), :class => "btn btn-default",
+        :method => :get %>
 <% end %>
