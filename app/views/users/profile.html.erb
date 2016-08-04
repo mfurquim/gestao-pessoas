@@ -24,6 +24,7 @@
 <% if not @user.academic_information.nil? %>
 
     <% @academic_information=@user.academic_information  %>
+    <% @subjects = Subject.all %>
     <%= render :partial => 'academic_informations/show' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>

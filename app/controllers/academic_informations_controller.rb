@@ -6,17 +6,22 @@ class AcademicInformationsController < ApplicationController
   # GET /academic_informations/1
   # GET /academic_informations/1.json
   def show
+   # Try save Js array to Ruby array
+    #@array_timetabling = JSON.parse(params[:array_timetabling])
+    @subjects = Subject.all
   end
 
   # GET /academic_informations/new
   def new
     @academic_information = AcademicInformation.new
     set_user
+    @subjects = Subject.all
   end
 
   # GET /academic_informations/1/edit
   def edit
     set_user
+    @subjects = Subject.all
   end
 
   # POST /academic_informations
@@ -26,16 +31,16 @@ class AcademicInformationsController < ApplicationController
     respond_to do |format|
       if @academic_information.save
         format.html do
-	  redirect_to [@academic_information.user, @academic_information], notice: 'Informação acadêmica criada com sucesso.' 
-	end
-        format.json { render :show, status: :created, location: @academic_information }
-      else
-	set_user
-        format.html { render :new }
-        format.json do
-	  render json: @academic_information.errors,
-	         status: :unprocessable_entity 
-	end
+    	  redirect_to [@academic_information.user, @academic_information], notice: 'Informação acadêmica criada com sucesso.' 
+    	end
+            format.json { render :show, status: :created, location: @academic_information }
+          else
+    	set_user
+            format.html { render :new }
+            format.json do
+    	  render json: @academic_information.errors,
+    	         status: :unprocessable_entity 
+    	end
       end
     end
   end
@@ -46,17 +51,17 @@ class AcademicInformationsController < ApplicationController
     respond_to do |format|
       if @academic_information.update(academic_information_params)
         format.html do 
-	  redirect_to [@academic_information.user, @academic_information],
-		      notice: 'Informação acadêmica atualiza com sucesso.'
-	end
-        format.json { render :show, status: :ok, location: @academic_information }
+    	  redirect_to [@academic_information.user, @academic_information],
+    		      notice: 'Informação acadêmica atualiza com sucesso.'
+    	end
+            format.json { render :show, status: :ok, location: @academic_information }
       else
-	set_user
-        format.html { render :edit }
-        format.json do
-	  render json: @academic_information.errors, 
-	  status: :unprocessable_entity 
-	end
+    	set_user
+            format.html { render :edit }
+            format.json do
+    	  render json: @academic_information.errors, 
+    	  status: :unprocessable_entity 
+    	end
       end
     end
   end

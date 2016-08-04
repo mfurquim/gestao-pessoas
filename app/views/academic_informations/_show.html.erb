@@ -1,3 +1,7 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Preencha os formularios </h4>
+  </div>
 <div class="row">
   <ul class="col-sm-12 info-group">
       <li class='info-group-item'>
@@ -15,3 +19,67 @@
   </ul>
 </div>
 <%= button_to "Editar", edit_user_personal_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
+</div>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Selecione as matérias da sua grade atual</h4>
+  </div>
+
+<div class="panel-body">
+  <ul class="col-lg-24">
+    <table cellpadding="10" cellspacing="1">
+    <tr>
+        <th width="100">Dias da semana / Horarios</th>
+        <th class="days">Segunda</th>
+        <th class="days">Terca</th>
+        <th class="days">Quarta</th>
+        <th class="days">Quinta</th>
+        <th class="days">Sexta</th>
+        <th class="days">Sabado</th>
+      </tr>
+      <tr>
+        <th class="hours">08 - 10</th>
+        <% for i in 0..5 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%> 
+      </tr>
+      <tr>
+        <th class="hours">10 - 12</th>
+        <% for i in 6..11 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+      </tr>
+      <tr>  
+        <th class="hours">12 - 13</th>
+        <% for i in 12..17 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+      </tr>
+      <tr>
+        <th class="hours">13 - 14</th>
+        <% for i in 18..23 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+      </tr>
+      <tr>
+        <th class="hours">14 - 16</th>
+        <% for i in 24..29 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+      </tr>
+      <tr>
+        <th class="hours">16 - 18</th>
+        <% for i in 30..35 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+      </tr> 
+      <tr>
+        <th class="hours">18 - 20</th>
+        <% for i in 36..41 %>
+          <td><div class="content" id="<%= i %>"></div></td>
+        <% end%>
+</table>
+  </ul>
+</div>
+</div>
