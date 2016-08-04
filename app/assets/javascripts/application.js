@@ -48,12 +48,9 @@ function takeElements() {
 	  	a+=1;
 	  }
 	}
-	console.log(array_timetabling);
-	alert(array_timetabling);
-}
+	var timetabling = JSON.stringify(array_timetabling);
 
-	$.ajax({
-        url : "/academic_informations/show",
-        type : "post",
-        data : { array_timetabling: JSON.stringify(array_timetabling) }
-    });
+	console.log(array_timetabling);
+	alert("timetabling" + timetabling);
+
+}

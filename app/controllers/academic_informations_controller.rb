@@ -2,12 +2,13 @@
 class AcademicInformationsController < ApplicationController
   before_action :set_academic_information, only: [:show, :edit, :update]
   before_filter :authenticate_user!
+  require 'json'
   
   # GET /academic_informations/1
   # GET /academic_informations/1.json
   def show
    # Try save Js array to Ruby array
-    #@array_timetabling = JSON.parse(params[:array_timetabling])
+    @array_timetabling = JSON.loads(:timetabling)
     @subjects = Subject.all
   end
 
@@ -18,6 +19,16 @@ class AcademicInformationsController < ApplicationController
     @subjects = Subject.all
   end
 
+  def arroz
+    puts "APARECEU UHUUUUU"
+    @mensagem = "Deu certo!!! Arroz"
+  end
+    helper_method :arroz
+
+  def save_timetabling
+    @array = JSON.parse(timetabling)
+    puts (@array)   
+  end
   # GET /academic_informations/1/edit
   def edit
     set_user
