@@ -32,7 +32,7 @@ for name in NAME
     full_name = [name, surname].join(' ')
     email = full_name.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')+"@zenitaerospace.com"
     user = User.create(email:email,
-                       password:password_load["user_admin"]["password"],
+                       password:password_load["common_user"]["password"],
                        role:roles.sample)
     personal_info = PersonalInformation.create(name: full_name,
                                                email: email,
