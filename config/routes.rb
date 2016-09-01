@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :academic_informations
   resources :subjects
   devise_for :users, :path => "accounts",
     controllers: {

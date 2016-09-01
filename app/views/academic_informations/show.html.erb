@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Registration:</strong>
+  <%= @academic_information.registration %>
+</p>
+
+<p>
+  <strong>Admission year:</strong>
+  <%= @academic_information.admission_year %>
+</p>
+
+<p>
+  <strong>Current semester:</strong>
+  <%= @academic_information.current_semester %>
+</p>
+
+<%= link_to 'Edit', edit_academic_information_path(@academic_information) %> |
+<%= link_to 'Back', academic_informations_path %>

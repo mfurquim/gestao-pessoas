@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Academic Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Registration</th>
+      <th>Admission year</th>
+      <th>Current semester</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @academic_informations.each do |academic_information| %>
+      <tr>
+        <td><%= academic_information.registration %></td>
+        <td><%= academic_information.admission_year %></td>
+        <td><%= academic_information.current_semester %></td>
+        <td><%= link_to 'Show', academic_information %></td>
+        <td><%= link_to 'Edit', edit_academic_information_path(academic_information) %></td>
+        <td><%= link_to 'Destroy', academic_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Academic information', new_academic_information_path %>
