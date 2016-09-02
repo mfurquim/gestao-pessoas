@@ -10,6 +10,7 @@ class AcademicInformationsController < ApplicationController
   # GET /academic_informations/1
   # GET /academic_informations/1.json
   def show
+		@academic_information = AcademicInformation.find_by_user_id(params[:id])
   end
 
   # GET /academic_informations/new
@@ -25,6 +26,7 @@ class AcademicInformationsController < ApplicationController
   # POST /academic_informations.json
   def create
     @academic_information = AcademicInformation.new(academic_information_params)
+		@academic_information.user_id = current_user.id
 
     respond_to do |format|
       if @academic_information.save
