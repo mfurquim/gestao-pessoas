@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Academic Informations</h1>
+<h1>Informações acadêmicas</h1>
 
 <table>
   <thead>
@@ -30,4 +30,13 @@
 
 <br>
 
-<%= link_to 'New Academic information', new_academic_information_path %>
+<% if not @user.personal_information.nil? %>
+
+  <% @information=@user.personal_information  %>
+  <%= render :partial => 'personal_informations/show' %>
+
+<% elsif @user.eql? current_user or policy(current_user).create?%>
+
+  <%= link_to 'Adicionar informação acadêmica', new_user_academic_information_path(@user) %>
+
+<% end %>

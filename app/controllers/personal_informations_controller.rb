@@ -30,7 +30,7 @@ class PersonalInformationsController < ApplicationController
       if @information.save
         format.html do
           redirect_to [@information.user, @information],
-                      notice: 'Informação pessoal criada.'
+            notice: 'Informação pessoal criada.'
         end
         format.json { render :show, status: :created, location: @information }
       else
@@ -38,7 +38,7 @@ class PersonalInformationsController < ApplicationController
         format.html { render :new }
         format.json do
           render json: @information.errors,
-                 status: :unprocessable_entity
+            status: :unprocessable_entity
         end
       end
     end
@@ -52,7 +52,7 @@ class PersonalInformationsController < ApplicationController
       if @information.update(personal_information_params)
         format.html do
           redirect_to [@information.user, @information],
-                      notice: 'Informação pessoal atualizada.'
+            notice: 'Informação pessoal atualizada.'
         end
         format.json { render :show, status: :ok, location: @information }
       else
@@ -60,7 +60,7 @@ class PersonalInformationsController < ApplicationController
         format.html { render :edit }
         format.json do
           render json: @information.errors,
-                 status: :unprocessable_entity
+            status: :unprocessable_entity
         end
       end
     end
@@ -74,7 +74,7 @@ class PersonalInformationsController < ApplicationController
                                              user_id: params[:user_id]).first
     if @information.nil?
       fail ActiveRecord::RecordNotFound.new('Personal informations not'\
-            " found with id #{params[:id]} and user_id: #{params[:user_id]}")
+                                            " found with id #{params[:id]} and user_id: #{params[:user_id]}")
     end
   end
 
