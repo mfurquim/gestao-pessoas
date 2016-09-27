@@ -28,15 +28,3 @@
   </tbody>
 </table>
 
-<br>
-
-<% if not @user.personal_information.nil? %>
-
-  <% @information=@user.personal_information  %>
-  <%= render :partial => 'personal_informations/show' %>
-
-<% elsif @user.eql? current_user or policy(current_user).create?%>
-
-  <%= link_to 'Adicionar informação acadêmica', new_user_academic_information_path(@user) %>
-
-<% end %>
