@@ -44,6 +44,12 @@ class UsersController < ApplicationController
   def id_params
     { id: params[:id] }
   end
+  
+  def my_academic_informations
+    @user = current_user
+    authorize @user, :academic_informations?
+    render :academic_informations
+  end  
 
   private :id_params
 end
