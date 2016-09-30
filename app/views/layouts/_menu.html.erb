@@ -4,6 +4,7 @@
     <ul class="nav nav-pills">
       <% if user_signed_in? %>
         <li><%= link_to 'Meu perfil', root_path, class: 'a menu' %></li>
+        <li><%= link_to 'Editar informações acadêmicas', my_academic_information_path(current_user), class: 'a menu' %></li>
         <li><%= link_to 'Todos membros', users_path, class: 'a menu' %></li>
         <% if policy(current_user).create? %>
           <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>

@@ -5,13 +5,13 @@ RSpec.describe "academic_informations/index", type: :view do
     assign(:academic_informations, [
       AcademicInformation.create!(
         :registration => "Registration",
-        :input_semester_year => "Input Semester Year",
-        :current_semester_year => "Current Semester Year"
+        :admission_year => "Admission Year",
+        :current_semester => 2
       ),
       AcademicInformation.create!(
         :registration => "Registration",
-        :input_semester_year => "Input Semester Year",
-        :current_semester_year => "Current Semester Year"
+        :admission_year => "Admission Year",
+        :current_semester => 2
       )
     ])
   end
@@ -19,7 +19,7 @@ RSpec.describe "academic_informations/index", type: :view do
   it "renders a list of academic_informations" do
     render
     assert_select "tr>td", :text => "Registration".to_s, :count => 2
-    assert_select "tr>td", :text => "Input Semester Year".to_s, :count => 2
-    assert_select "tr>td", :text => "Current Semester Year".to_s, :count => 2
+    assert_select "tr>td", :text => "Admission Year".to_s, :count => 2
+    assert_select "tr>td", :text => 2.to_s, :count => 2
   end
 end

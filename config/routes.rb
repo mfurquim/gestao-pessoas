@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
+ 
+  resources :academic_informations
+  resources :users, only: [:index] do
+    get 'edit_role' => 'roles#edit'
+    post 'edit_role' => 'roles#update'
+  end
+
   resources :subjects
   devise_for :users, :path => "accounts",
     controllers: {
       sessions: 'users/sessions',
       registrations: 'users/registrations',
       passwords: 'users/passwords',
-      }
+    }
 
   devise_scope :user do
     authenticated :user do
@@ -27,8 +34,10 @@ Rails.application.routes.draw do
     post 'edit_role' => 'roles#update' 
     resources :academic_informations, only:[:show,:edit,:update,:create,:new]
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
+    resources :academic_informations, only:[:show,:edit,:update,:create,:new,:index]
   end
   root 'users/sessions#new'
+  get "my_academic_information" => "users#my_academic_informations"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

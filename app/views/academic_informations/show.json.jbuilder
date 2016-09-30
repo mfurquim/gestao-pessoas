@@ -1,1 +1,1 @@
-json.extract! @academic_information, :id, :registration, :input_semester_year, :current_semester_year, :created_at, :updated_at
+json.extract! @academic_information, :id, :registration, :admission_year, :current_semester, :created_at, :updated_at

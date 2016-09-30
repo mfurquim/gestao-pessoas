@@ -83,3 +83,10 @@
   </ul>
 </div>
 </div>
+<div class="row">
+	<div class="col-sm-6">
+		<%= button_to "Editar informações acadêmicas", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
+		<%= button_to "Voltar", root_path ,:class => "button", :method => :get %>
+	</div>
+</div>
+
