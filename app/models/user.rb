@@ -11,7 +11,8 @@ class User < ActiveRecord::Base
   validates :role, presence: true
   belongs_to :role
   has_one :personal_information
-
+  has_one :academic_information
+  
   def role?(role)
     equals = false
     equals = role.to_s.eql? self.role.name unless self.role.nil?

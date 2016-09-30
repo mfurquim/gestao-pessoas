@@ -1,0 +1,27 @@
+// Place all the styles related to the academic_informations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+
+}
+th.days {
+    background: #082c62;
+    width: 200px;
+    height: 50px;
+    color: white;
+}
+
+th.hours {
+  background: #de2950;
+  width: 200px;
+  height: 50px;
+  color: white;
+}
+div.content {
+ width: auto;
+ height: 50px;
+}
