@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Matérias</h1>
+
+<br>
+
+<% if not @user.subjects.nil? %>
+
+  <% @academic_information = @user.academic_information  %>
+  <%= render 'subjects/show' %>
+
+<% elsif @user.eql? current_user or policy(current_user).create?%>
+
+  <%= link_to 'Adicionar materias', new_user_academic_information_path(@user) %>
+
+<% end %>
