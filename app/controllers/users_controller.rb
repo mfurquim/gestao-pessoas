@@ -55,7 +55,11 @@ class UsersController < ApplicationController
 
     @timetabling = Timetabling.where(academic_information: @user.academic_information).map{ |clas| [clas.table_position,clas.subject.name]}.to_h
     render :academic_information
-  end  
+  end
+
+  def my_subjects
+    render :subject
+  end
 
   private :id_params
 end

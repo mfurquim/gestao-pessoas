@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#profile', as: :user
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
-    post 'edit_role' => 'roles#update' 
+    post 'edit_role' => 'roles#update'
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
     resources :academic_informations, only:[:show,:edit,:update,:create,:new,:index]
     resources :timetabling, only: [:show,:create, :edit]
@@ -41,6 +41,7 @@ Rails.application.routes.draw do
   end
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"
+  get "my_subjects" => "users#my_subjects"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

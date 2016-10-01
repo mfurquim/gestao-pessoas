@@ -1,1 +1,7 @@
 Realizar busca
+
+<form id='search_bar' name='search'>
+  <div class="input-field">
+    <input name="search" type="text" placeholder="Pesquisar..." autocomplete="off" required<%= text_field_tag :search, params[:search]%>
+  </div>
+</form>
