@@ -45,6 +45,7 @@ class UsersController < ApplicationController
     { id: params[:id] }
   end
   
+  # GET /my academic information
   def my_academic_informations
     @user = current_user
     authorize @user, :my_academic_informations?

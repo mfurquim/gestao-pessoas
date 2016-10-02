@@ -28,7 +28,7 @@
                 <td class="hours"><%= hour %></td>
                 <% 6.times do |day| %>
                     <td>
-                        <div class="content" id="<%= "#{hour}#{day}" %>" data-toggle="modal" data-target="#myModal">-</div>
+                        <div class="content" id="<%= "#{hour}#{day}" %>" data-toggle="modal" data-target="#myModal" onclick="getElement(this);">-</div>
                     </td>
                 <% end %>
             </tr>
@@ -54,7 +54,7 @@
       <div class="modal-body">
         <div class="list-group">
           <% @subjects.each do |subject| %>
-            <button class="list-group-item" type="button"><%=subject.name%></li>
+            <button class="list-group-item" type="button" onclick="update(<%= subject.id %>)"><%=subject.name%>
           <% end %>
         </div>
       <!--

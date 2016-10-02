@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
  
-  resources :academic_informations
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
     post 'edit_role' => 'roles#update'
@@ -32,9 +31,9 @@ Rails.application.routes.draw do
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
     post 'edit_role' => 'roles#update' 
-    resources :academic_informations, only:[:show,:edit,:update,:create,:new]
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
     resources :academic_informations, only:[:show,:edit,:update,:create,:new,:index]
+    post 'update_t' => 'academic_informations#update_t', format: :json
   end
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"

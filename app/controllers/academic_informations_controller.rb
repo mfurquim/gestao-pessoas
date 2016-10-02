@@ -1,7 +1,14 @@
 # Controller for academic informations
 class AcademicInformationsController < ApplicationController
   before_action :set_academic_information, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_user
+def update_t
+    params[:key]
+    params[:subject_id]
+    respond_to do |format|
+        format.json{ render json: {ok: 'done'}, status: :ok }
+    end
+end
   # GET /academic_informations
   # GET /academic_informations.json
   def index
@@ -67,11 +74,14 @@ class AcademicInformationsController < ApplicationController
   end
 
   private
+
   # Use callbacks to share common setup or constraints between actions.
   def set_academic_information
     @academic_information = AcademicInformation.find(params[:id])
   end
-
+  def set_user
+    @user = User.find(params[:user_id])
+  end
   # Never trust parameters from the scary internet, only allow the white list through.
   def academic_information_params
     params.require(:academic_information).permit(:registration, :admission_year, :current_semester)
