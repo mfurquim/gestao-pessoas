@@ -6,11 +6,11 @@
 
 <% if not @user.subjects.nil? %>
 
-  <% @academic_information = @user.academic_information  %>
+  <% @academic_information = @user.subject  %>
   <%= render 'subjects/show' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 
-  <%= link_to 'Adicionar materias', new_user_academic_information_path(@user) %>
+  <%= link_to 'Adicionar materias', new_user_subject_path(@user) %>
 
 <% end %>
