@@ -10,15 +10,15 @@
       </li>
       <li class='info-group-item'>
         <label>Semestre/ano de ingresso na UnB:</label>
-          <%= @academic_information.input_semester_year %>
+          <%= @academic_information.admission_year %>
       </li>
       <li class='info-group-item'>
-        <label>Semestre/ano atual:</label>
-          <%= @academic_information.current_semester_year %>
+        <label>Semestre atual:</label>
+          <%= @academic_information.current_semester %>
       </li>
   </ul>
 </div>
-<%= button_to "Editar", edit_user_personal_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
+<%= button_to "Editar", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
 </div>
 
 <div class="panel panel-default">

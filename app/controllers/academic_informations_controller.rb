@@ -17,6 +17,7 @@ class AcademicInformationsController < ApplicationController
   # GET /academic_informations/new
   def new
     @academic_information = AcademicInformation.new
+    @subjects = Subject.all
   end
 
   # GET /academic_informations/1/edit
@@ -30,6 +31,7 @@ class AcademicInformationsController < ApplicationController
     @academic_information.user_id = current_user.id
 
     respond_to do |format|
+      @subjects=Subject.all
       if @academic_information.save
         format.html { redirect_to @academic_information, notice: 'Academic information was successfully created.' }
         format.json { render :show, status: :created, location: @academic_information }

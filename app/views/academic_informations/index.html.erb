@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>User</th>
       <th>Registration</th>
       <th>Input semester year</th>
       <th>Current semester year</th>
@@ -15,10 +16,11 @@
   <tbody>
     <% @academic_informations.each do |academic_information| %>
       <tr>
+        <td><%= link_to( academic_information.user.email, user_path(academic_information.user.id)) %></td>
         <td><%= academic_information.registration %></td>
         <td><%= academic_information.admission_year %></td>
         <td><%= academic_information.current_semester %></td>
-
+      
         <td><%= link_to 'Show', academic_information %></td>
         <td><%= link_to 'Edit', edit_academic_information_path(academic_information) %></td>
         <td><%= link_to 'Destroy', academic_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
