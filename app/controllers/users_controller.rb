@@ -58,6 +58,7 @@ class UsersController < ApplicationController
   end
 
   def my_subjects
+    @user = current_user
     render :subject
   end
 
