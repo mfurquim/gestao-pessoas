@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
   resources :professional_informations
   resources :searches
-
+  resources :projects
+  resources :academic_informations
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
     post 'edit_role' => 'roles#update'
