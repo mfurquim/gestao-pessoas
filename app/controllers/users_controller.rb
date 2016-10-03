@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     user_query = User.where(id_params)
     if !user_query.empty?
       @user = user_query.first
+    @timetabling = Timetabling.where(academic_information: @user.academic_information).map{ |clas| [clas.table_position,clas.subject.name]}.to_h
       authorize @user
       render :profile
     else
@@ -36,6 +37,8 @@ class UsersController < ApplicationController
   # GET /users/myprofile
   def myprofile
     @user = current_user
+    @timetabling = Timetabling.where(academic_information: @user.academic_information).map{ |clas| [clas.table_position,clas.subject.name]}.to_h
+
     authorize @user, :profile?
     render :profile
   end

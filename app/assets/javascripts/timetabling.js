@@ -3,7 +3,7 @@ function update(subjectId, timetablingPath, academicInformation){
     $.ajax({
         url: timetablingPath,
         method: 'POST',
-        data: {'key':element.getAttribute('id'),
+        data: {'table_position':element.getAttribute('id'),
                'subject_id': subjectId,
                'academic_information_id': academicInformation },
         success: function(data){

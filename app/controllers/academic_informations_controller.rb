@@ -11,31 +11,30 @@ class AcademicInformationsController < ApplicationController
   # GET /academic_informations/1
   # GET /academic_informations/1.json
   def show
-    @academic_information = AcademicInformation.find_by_user_id(params[:user_id])
+    @academic_information = AcademicInformation.where(user_id: params[:user_id]).first
+    @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
   end
 
   # GET /academic_informations/new
   def new
-    @user=User.find(params[:user_id])
     @academic_information = AcademicInformation.new    
-    @subjects = Subject.all
-    @timetabling=Timetabling.where(academic_information: 2).map{ |k| [k.table_position, k.subject.name]}.to_h
   end
 
   # GET /academic_informations/1/edit
   def edit
+    @subjects = Subject.all
+    @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
   end
 
   # POST /academic_informations
   # POST /academic_informations.json
   def create
     @academic_information = AcademicInformation.new(academic_information_params)
-    @academic_information.user_id = current_user.id
 
     respond_to do |format|
       @subjects=Subject.all
       if @academic_information.save
-        format.html { redirect_to @academic_information, notice: 'Academic information was successfully created.' }
+        format.html { redirect_to [@academic_information.user, @academic_information], notice: 'Academic information was successfully created.' }
         format.json { render :show, status: :created, location: @academic_information }
       else
         format.html { render :new }
@@ -49,7 +48,7 @@ class AcademicInformationsController < ApplicationController
   def update
     respond_to do |format|
       if @academic_information.update(academic_information_params)
-        format.html { redirect_to @academic_information, notice: 'Academic information was successfully updated.' }
+        format.html { redirect_to [@academic_information.user,@academic_information], notice: 'Academic information was successfully updated.' }
         format.json { render :show, status: :ok, location: @academic_information }
       else
         format.html { render :edit }
@@ -79,6 +78,8 @@ class AcademicInformationsController < ApplicationController
   end
   # Never trust parameters from the scary internet, only allow the white list through.
   def academic_information_params
-    params.require(:academic_information).permit(:registration, :admission_year, :current_semester)
+    permit_params=params.require(:academic_information).permit(:registration, :admission_year, :current_semester)
+    permit_params[:user_id]=params[:user_id]
+    permit_params
   end
 end
