@@ -1,31 +1,31 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Projects</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>Lista de todos os projetos</h2>
+  </div>
+<% unless @projects.empty? %>
+    <input hidden value="haha"></input>
+    <%= grid(@projects, show_filters: :when_filtered) do |project_grid|
 
-<table>
-  <thead>
-    <tr>
-      <th>Project name</th>
-      <th>Project description</th>
-      <th>Manager name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+        project_grid.blank_slate  do
+            '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
+        end
+        project_grid.column name: 'Nome do projeto', attribute: 'project_name' do |project|
+            project.project_name
+        end
+        project_grid.column name: 'Descrição do projeto', attribute: 'project_description' do |project|
+            project.project_description
+        end
+        project_grid.column name: 'Nome do gestor', attribute: 'manager_name' do |project|
+            project.manager_name
+        end
+   
+    end %>
+<% else %>
+    <h1> Nenhum registro </h1>
+<% end %>
 
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.project_name %></td>
-        <td><%= project.project_description %></td>
-        <td><%= project.manager_name %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+</div>
 
-<br>
-
-<%= link_to 'New Project', new_project_path %>
+<%= link_to 'Registrar novo projeto', new_project_path %>

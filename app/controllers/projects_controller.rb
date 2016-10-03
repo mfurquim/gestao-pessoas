@@ -1,10 +1,13 @@
+require 'wice_grid'
+
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+    #@projects = Project.all
+    @projects = initialize_grid(Project.all)
   end
 
   # GET /projects/1
