@@ -11,13 +11,15 @@ class AcademicInformationsController < ApplicationController
   # GET /academic_informations/1
   # GET /academic_informations/1.json
   def show
-    @academic_information = AcademicInformation.find_by_user_id(params[:id])
+    @academic_information = AcademicInformation.find_by_user_id(params[:user_id])
   end
 
   # GET /academic_informations/new
   def new
-    @academic_information = AcademicInformation.new
+    @user=User.find(params[:user_id])
+    @academic_information = AcademicInformation.new    
     @subjects = Subject.all
+    @timetabling=Timetabling.where(academic_information: 2).map{ |k| [k.table_position, k.subject.name]}.to_h
   end
 
   # GET /academic_informations/1/edit

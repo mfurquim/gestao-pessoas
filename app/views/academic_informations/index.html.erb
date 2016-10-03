@@ -21,9 +21,8 @@
         <td><%= academic_information.admission_year %></td>
         <td><%= academic_information.current_semester %></td>
       
-        <td><%= link_to 'Show', academic_information %></td>
-        <td><%= link_to 'Edit', edit_academic_information_path(academic_information) %></td>
-        <td><%= link_to 'Destroy', academic_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show',user_academic_information_path(academic_information.user,academic_information) %></td>
+        <td><%= link_to 'Edit',  edit_user_academic_information_path(academic_information.user,academic_information) %></td>
       </tr>
     <% end %>
   </tbody>

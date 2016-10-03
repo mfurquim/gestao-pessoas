@@ -1,12 +1,13 @@
-function update(subjectId){
+function update(subjectId, timetablingPath, academicInformation){
     console.log(element);
     $.ajax({
-        url: '/users/1/update_t',
+        url: timetablingPath,
         method: 'POST',
         data: {'key':element.getAttribute('id'),
-               'subject_id': subjectId},
+               'subject_id': subjectId,
+               'academic_information_id': academicInformation },
         success: function(data){
-            element.textContent=data.ok;
+            element.textContent=data.subject_name;
             console.log(data);
         },
         error: function(){
@@ -16,6 +17,7 @@ function update(subjectId){
     $("#myModal").modal('hide');
     
 }
+
 function getElement(elementFunction){
     element=elementFunction;
 }
