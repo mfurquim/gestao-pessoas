@@ -4,9 +4,9 @@
 
 <br>
 
-<% if not @user.subject.nil? %>
-
-  <% @subject = @user.subject  %>
+<% if not @user.subjects.blank? %>
+  
+  <% @subject = @user.subjects  %>
   <%= render 'subjects/show' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>

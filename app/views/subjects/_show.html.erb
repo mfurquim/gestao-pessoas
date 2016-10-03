@@ -1,9 +1,18 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
+<div class="row">
+<p class="col-sm-4">
+<%#= image_tag @information.image.url(:small), height: 250, width: 150, style: 'border: 1px solid; border-radius: 2px;' %>
 </p>
+<ul class="col-sm-8 info-group">
+  <li class='info-group-item'>
+    <label>Name:</label>
+    <%= @subject.name %>
+  </li>
+</ul>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <%= button_to "Editar matérias", edit_user_subject_path(@subject.first.user,@subject), :class => "btn btn-default", :method => :get %>
+    <%= button_to "Voltar", root_path ,:class => "button", :method => :get %>
+  </div>
+</div>
 
-<%= link_to 'Editar', edit_subject_path(@subject) %> |
-<%= link_to 'Voltar', subjects_path %>

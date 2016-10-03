@@ -59,6 +59,7 @@ class UsersController < ApplicationController
 
   def my_subjects
     @user = current_user
+    authorize @user, :my_subjects?
     render :subject
   end
 
