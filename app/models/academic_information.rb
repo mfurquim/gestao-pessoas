@@ -1,5 +1,6 @@
 class AcademicInformation < ActiveRecord::Base
 belongs_to :user
+has_many :timetablings
 
 validates :registration, presence: true, format:
 		  { with: /[0-9]{2}\/[0-9]{7}/ },

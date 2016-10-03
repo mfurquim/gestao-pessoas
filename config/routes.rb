@@ -33,7 +33,7 @@ Rails.application.routes.draw do
     post 'edit_role' => 'roles#update' 
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
     resources :academic_informations, only:[:show,:edit,:update,:create,:new,:index]
-    post 'update_t' => 'academic_informations#update_t', format: :json
+    resources :timetabling, only[:show,:update]
   end
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"

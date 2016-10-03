@@ -2,13 +2,6 @@
 class AcademicInformationsController < ApplicationController
   before_action :set_academic_information, only: [:show, :edit, :update, :destroy]
   before_action :set_user
-def update_t
-    params[:key]
-    params[:subject_id]
-    respond_to do |format|
-        format.json{ render json: {ok: 'done'}, status: :ok }
-    end
-end
   # GET /academic_informations
   # GET /academic_informations.json
   def index
