@@ -1,2 +1,2 @@
-class Searchs
+class Searches
 end
