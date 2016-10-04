@@ -8,6 +8,7 @@
 
   <% @academic_information = @user.academic_information  %>
   <%= render 'academic_informations/show' %>
+  <%= render 'timetabling/show' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 

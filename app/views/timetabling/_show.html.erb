@@ -27,5 +27,7 @@
         </table>
       </ul>
     </div>
-<%= button_to "Editar grade horário", edit_user_timetabling_path(@user,0), :class => "btn btn-default", :method => :get %>
+    <% if see_edit?(@user) %>
+        <%= button_to "Editar grade horário", edit_user_timetabling_path(@user,0), :class => "btn btn-default", :method => :get %>
+    <% end %>
 </div>

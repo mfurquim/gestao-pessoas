@@ -1,20 +1,24 @@
 class TimetablingController < ApplicationController
-    
+    after_action :verify_authorized
     def show
         @academic_information = AcademicInformation.find_by_user_id(params[:user_id])
+        authorize Timetabling
         @subjects = Subject.all
         @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
     end
 
     def edit
         @academic_information = AcademicInformation.find_by_user_id(params[:user_id])
+        authorize @academic_information, :new?
         @user = @academic_information.user
         @subjects = Subject.all
         @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
     end
     # POST /users/:user_id/timetabling to create a new assossiation of timetabling
     def create
+        
         academic_information = AcademicInformation.find(params[:academic_information_id])
+        authorize academic_information, :new?
         timetabling = Timetabling.where(table_position: params[:table_position],
          academic_information: academic_information.id).first
 

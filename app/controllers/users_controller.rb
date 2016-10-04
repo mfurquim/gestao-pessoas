@@ -52,6 +52,8 @@ class UsersController < ApplicationController
   def my_academic_informations
     @user = current_user
     authorize @user, :my_academic_informations?
+
+    @timetabling = Timetabling.where(academic_information: @user.academic_information).map{ |clas| [clas.table_position,clas.subject.name]}.to_h
     render :academic_information
   end  
 

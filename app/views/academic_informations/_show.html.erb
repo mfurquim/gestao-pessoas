@@ -18,7 +18,9 @@
           </li>
       </ul>
     </div>
+    <% if see_edit?(@academic_information.user) %>
             <%= button_to "Editar informações acadêmicas", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
+    <% end %>
 </div>
 
 
