@@ -1,0 +1,2 @@
+class Searchs
+end
