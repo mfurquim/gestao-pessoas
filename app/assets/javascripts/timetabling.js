@@ -21,3 +21,37 @@ function update(subjectId, timetablingPath, academicInformation){
 function getElement(elementFunction){
     element=elementFunction;
 }
+
+function showDiscipline(path){
+    $('.dis').show();
+    $.ajax({
+        url: path,
+        method: 'GET',
+        success: function(data,stats){
+           var list_subject=$('.dis ul');
+           data.forEach(function(subject){
+               list_subject.append('<li id="'+subject.id+'" onclick="updateCoursed(this,'+"'"+path+"'"+')">'+subject.name+'</li>');
+           });
+            },
+        error: function(){
+              console.log("error");
+            }
+    })
+}
+function removeDiscipline(){}
+function updateCoursed(element,path){
+    var id = element.id;
+    $.ajax({
+        url: path+".json",
+        method: 'POST',
+        data: {'subject_id': id},
+        success: function(message,stats){
+            $(element).remove();
+            $('ul.disok').append(element);
+            console.log(message);
+            console.log(stats);
+        },
+        error: function(e){ console.log(e);}
+    });
+    console.log(id);
+}

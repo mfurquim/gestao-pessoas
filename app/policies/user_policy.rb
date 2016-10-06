@@ -20,6 +20,9 @@ class UserPolicy < ApplicationPolicy
     excluded_users
   end
 
+  def uncourse_subject?
+    high_users || (record == user)
+  end
   def my_academic_informations?
     excluded_users 
   end
