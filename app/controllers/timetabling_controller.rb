@@ -1,5 +1,6 @@
 class TimetablingController < ApplicationController
     after_action :verify_authorized
+    # /GET /users/:user_id/timetabling show a specific timetabling
     def show
         @academic_information = AcademicInformation.find_by_user_id(params[:user_id])
         authorize Timetabling
@@ -14,7 +15,54 @@ class TimetablingController < ApplicationController
         @subjects = Subject.all
         @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
     end
-    # POST /users/:user_id/timetabling to create a new assossiation of timetabling
+
+    # /GET /users/:user_id/coursed_subject show the list off made disciplines
+    # by a user 
+    def made_subject
+        authorize Timetabling, :show?
+        academic_information = AcademicInformation.where(
+                                    user_id: params[:user_id]).first
+        
+        respond_to do |format|
+            unless academic_information.nil?
+                @subjects = academic_information.subjects 
+                @user = academic_information.user
+                format.html { render :coursed }
+                format.json { render json: @subject }
+            else
+                format.html { redirect_to  user_academic_informations_path, alert: "Haven't register any academic information" }
+            end
+        end
+    end
+
+    # GET /users/:user_id/update_coursed_subject, obtain all subjects the 
+    # user didn't made yet
+    def uncourse_subject
+        authorize current_user
+        academic = AcademicInformation.select(:id)
+                                      .where(user_id: params[:user_id]).first
+        @unsubjects = Subject.select(:id,:name).where.not(id: academic.subjects)
+        
+        respond_to do |format|
+            format.json { render json: @unsubjects }
+        end
+    end
+    
+    # POST /users/:user_id/update_coursed_subject, create a association with user
+    # and a discipline id
+    def update_coursed
+        authorize current_user, :uncourse_subject?
+        subject = Subject.select(:id).where(id: params[:subject_id]).first
+        academic = AcademicInformation
+                                .where(user_id: params[:user_id]).first
+        subject.academic_informations<< academic
+        respond_to do |format|
+            format.json { render json: {message: 'Salvo'}, status: :ok }
+        end
+    end
+
+    # POST /users/:user_id/timetabling to create a new association of timetabling
+    # or destroy a existing association
     def create
         
         academic_information = AcademicInformation.find(params[:academic_information_id])

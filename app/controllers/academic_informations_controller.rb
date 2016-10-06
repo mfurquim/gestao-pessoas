@@ -16,6 +16,7 @@ class AcademicInformationsController < ApplicationController
     @academic_information = AcademicInformation.where(user_id: params[:user_id]).first
     authorize @academic_information, :index?
     @timetabling=Timetabling.where(academic_information: @academic_information.id).map{ |k| [k.table_position, k.subject.name]}.to_h
+    @subjects = @academic_information.subjects
   end
 
   # GET /academic_informations/new

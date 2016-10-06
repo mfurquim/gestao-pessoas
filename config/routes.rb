@@ -34,6 +34,9 @@ Rails.application.routes.draw do
     resources :personal_informations, only:[:show,:edit,:update,:create,:new]
     resources :academic_informations, only:[:show,:edit,:update,:create,:new,:index]
     resources :timetabling, only: [:show,:create, :edit]
+    get 'coursed_subject' => 'timetabling#made_subject'
+    get 'update_coursed_subject' => 'timetabling#uncourse_subject'
+    post 'update_coursed_subject' => 'timetabling#update_coursed'
   end
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"
