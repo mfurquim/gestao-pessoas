@@ -45,13 +45,13 @@
               <% end %>
           </ul>
         </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <%= button_to "Editar", edit_user_personal_information_path(@information.user,@information), :class => "btn btn-default", :method => :get %>
-            <!--<%= button_to "Voltar", root_path ,:class => "button", :method => :get %> -->
+    <% if see_edit?(@information.user) %>
+        <div class="row">
+            <div class="col-sm-6">
+                <%= button_to "Editar", edit_user_personal_information_path(@information.user,@information), :class => "btn btn-default", :method => :get %>
+                <!--<%= button_to "Voltar", root_path ,:class => "button", :method => :get %> -->
+            </div>
         </div>
-
-
-    </div>
+    <% end %>
     </div>
 </div>

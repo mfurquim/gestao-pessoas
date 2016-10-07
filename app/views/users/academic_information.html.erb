@@ -7,8 +7,10 @@
 <% if not @user.academic_information.nil? %>
 
   <% @academic_information = @user.academic_information  %>
+  <% @subjects = @academic_information.subjects %>
   <%= render 'academic_informations/show' %>
   <%= render 'timetabling/show' %>
+  <%= render 'timetabling/coursed' %>
 
 <% elsif @user.eql? current_user or policy(current_user).create?%>
 

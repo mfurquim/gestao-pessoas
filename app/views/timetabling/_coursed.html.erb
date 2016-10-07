@@ -15,8 +15,7 @@
         <% end %>
       </ul>
     </div>
-    <% if see_edit?(current_user) %>
-
+    <% if see_edit?(@user) %>
         <%= button_tag "Adicionar disciplinas",id: 'add',   class: "btn btn-default", onclick: 'showDiscipline("'+ user_update_coursed_subject_path(@user)+'")'%>
     <% end %>
 </div>
