@@ -19,4 +19,15 @@ class UserPolicy < ApplicationPolicy
   def profile?
     excluded_users
   end
+
+  def uncourse_subject?
+    high_users || (record == user)
+  end
+  def my_academic_informations?
+    excluded_users 
+  end
+
+  def my_subjects?
+    excluded_users
+  end
 end

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Academic Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Registration</th>
+      <th>Input semester year</th>
+      <th>Current semester year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @academic_informations.each do |academic_information| %>
+      <tr>
+        <td><%= link_to( academic_information.user.email, user_path(academic_information.user.id)) %></td>
+        <td><%= academic_information.registration %></td>
+        <td><%= academic_information.admission_year %></td>
+        <td><%= academic_information.current_semester %></td>
+      
+        <td><%= link_to 'Show',user_academic_information_path(academic_information.user,academic_information) %></td>
+        <td><%= link_to 'Edit',  edit_user_academic_information_path(academic_information.user,academic_information) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

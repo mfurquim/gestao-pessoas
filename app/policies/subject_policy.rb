@@ -1,6 +1,9 @@
 # Verify permissions to personal informations manipulation
 class SubjectPolicy < ApplicationPolicy
   # Define who can see users and they profiles
+  def show?
+    excluded_users
+  end
   def new?
     high_users
   end
@@ -13,9 +16,8 @@ class SubjectPolicy < ApplicationPolicy
   def edit?
     high_users
   end
-
-  def update?
-    user_or_high
+  def destroy?
+    high_users
   end
 
   def user_or_high

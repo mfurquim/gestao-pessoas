@@ -1,0 +1,49 @@
+  <ul class="col-lg-24">
+    <table cellpadding="10" cellspacing="1">
+        <thead>
+            <tr>
+                <th width="100">Dias da semana / Horarios</th>
+                <% Date::DAYNAMES.slice(1,6).each do |days| %>
+                    <th class="days"><%= t(days) %></th>
+                <% end %>
+            </tr>
+        </thead>
+        <% %w(08-10 10-12 12-13 13-14 14-16 16-18).each do |hour|%>
+            <tr >
+                <td class="hours"><%= hour %></td>
+                <% 6.times do |day| %>
+                    <td>
+                        <div class="content" id="<%= "#{hour}#{day}" %>" data-toggle="modal" data-target="#myModal" onclick="getElement(this);"><%= @timetabling["#{hour}#{day}"] %></div>
+                    </td>
+                <% end %>
+            </tr>
+        <% end %>
+    </table>
+  </ul>
+</div>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Disciplinas</h4>
+      </div>
+      <div class="modal-body">
+        <div class="list-group">
+            <button class="list-group-item" type="button" onclick="update(0,'<%= user_timetabling_index_path(@user) %>',<%= @academic_information.id %>)">--</button >
+          <% @subjects.each do |subject| %>
+            <button class="list-group-item" type="button" onclick="update(<%= subject.id %>,'<%= user_timetabling_index_path(@user) %>',<%= @academic_information.id %>)"><%=subject.name%></button>
+          <% end %>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+</div>

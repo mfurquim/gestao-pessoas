@@ -1,0 +1,14 @@
+Realizar busca
+
+<%= form_tag searches_path, :method => 'get'  do %>
+  <%= text_field_tag :search, params[:search]%>
+  <%= submit_tag "Busca", :name => nil  %>
+<% end %>
+
+<% if @results.present? %>
+  <% @results.each do |result|%>
+    <%= result%>
+  <% end %>
+<% else %>
+  <p>Não tem nenhum usuário com esse parametro <%= params[:search] %>.</p>
+<% end %>

@@ -1,47 +1,57 @@
-<div class="row">
-  <p class="col-sm-4">
-    <%= image_tag @information.image.url(:small), height: 250, width: 150, style: 'border: 1px solid; border-radius: 2px;' %>
-  </p>
-  <ul class="col-sm-8 info-group">
-      <li class='info-group-item'>
-        <label>Name:</label>
-        <%= @information.name %>
-      </li>
-      <li class='info-group-item'>
-        <label>Idade:</label>
-        <%= @information.age %>
-      </li>
-      <li class='info-group-item'>
-        <label>Email:</label>
-          <%= @information.email %>
-      </li>
-      <li class='info-group-item'>
-        <label>Número celular:</label>
-          <%= @information.phone_number %>
-      </li>
-      <li class='info-group-item'>
-        <label>Data de aniversário:</label>
-          <%= @information.birthday %>
-      </li>
-      <li class='info-group-item'>
-        <label>Endereço:</label>
-          <%= @information.address %>
-      </li>
-      <% if see_edit? @information.user %>
-        <li class='info-group-item'>
-          <label>RG:</label>
-            <%= @information.rg %>
-        </li>
-        <li class='info-group-item'>  
-          <label>CPF:</label>
-            <%= @information.cpf %>
-        </li>
-      <% end %>
-  </ul>
-</div>
-<div class="row">
-<div class="col-sm-6">
-<%= button_to "Editar", edit_user_personal_information_path(@information.user,@information), :class => "btn btn-default", :method => :get %>
-<!--<%= button_to "Voltar", root_path ,:class => "button", :method => :get %> -->
-</div>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Informações Pessoais</h4>
+    </div>
+
+    <div class="panel-body">
+        <div class="row">
+          <p class="col-sm-4">
+            <%= image_tag @information.image.url(:small), height: 250, width: 150, style: 'border: 1px solid; border-radius: 2px;' %>
+          </p>
+          <ul class="col-sm-8 info-group">
+              <li class='info-group-item'>
+                <label>Name:</label>
+                <%= @information.name %>
+              </li>
+              <li class='info-group-item'>
+                <label>Idade:</label>
+                <%= @information.age %>
+              </li>
+              <li class='info-group-item'>
+                <label>Email:</label>
+                  <%= @information.email %>
+              </li>
+              <li class='info-group-item'>
+                <label>Número celular:</label>
+                  <%= @information.phone_number %>
+              </li>
+              <li class='info-group-item'>
+                <label>Data de aniversário:</label>
+                  <%= @information.birthday %>
+              </li>
+              <li class='info-group-item'>
+                <label>Endereço:</label>
+                  <%= @information.address %>
+              </li>
+              <% if see_edit? @information.user %>
+                <li class='info-group-item'>
+                  <label>RG:</label>
+                    <%= @information.rg %>
+                </li>
+                <li class='info-group-item'>  
+                  <label>CPF:</label>
+                    <%= @information.cpf %>
+                </li>
+              <% end %>
+          </ul>
+        </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <%= button_to "Editar", edit_user_personal_information_path(@information.user,@information), :class => "btn btn-default", :method => :get %>
+            <!--<%= button_to "Voltar", root_path ,:class => "button", :method => :get %> -->
+        </div>
+
+
+    </div>
+    </div>
 </div>
