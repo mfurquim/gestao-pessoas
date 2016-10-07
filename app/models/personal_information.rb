@@ -20,21 +20,21 @@ class PersonalInformation < ActiveRecord::Base
   validates :phone_number,
             format: { with: /(\(\d{1,2}\)\d{4,5}-\d{4}\z)|\A\Z/ },
             presence: false
- 
+
   has_attached_file :image, styles: { small: "564x564>" },
                              :url  => "/assets/images/:id/:styl"+
                                       "e/:basename.:extension",
                              :path => ":rails_root/public/assets/images"+
                                       "/:id/:style/:basename.:extension"
-  
-  validates_attachment :image, content_type: 
+
+  validates_attachment :image, content_type:
                                { content_type: ['image/jpg','image/png'] },
                                size: { in: 0..6.megabytes }
 
   def age
     my_age = 0
     unless self.birthday.nil?
-      my_age = DateTime.current.strftime('%Y%m%d').to_i - 
+      my_age = DateTime.current.strftime('%Y%m%d').to_i -
                self.birthday.strftime('%Y%m%d').to_i
       my_age /= 1e4
     end

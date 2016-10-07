@@ -26,4 +26,8 @@ class UserPolicy < ApplicationPolicy
   def my_academic_informations?
     excluded_users 
   end
+
+  def my_subjects?
+    excluded_users
+  end
 end
