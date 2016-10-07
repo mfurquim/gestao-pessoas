@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Grade horária</h4>
+  </div>
+
+    <div class="panel-body">
+      <ul class="col-lg-24">
+        <table cellpadding="10" cellspacing="1">
+            <thead>
+                <tr>
+                    <th width="100">Dias da semana / Horarios</th>
+                    <% Date::DAYNAMES.slice(1,6).each do |days| %>
+                        <th class="days"><%= t(days) %></th>
+                    <% end %>
+                </tr>
+            </thead>
+            <% %w(08-10 10-12 12-13 13-14 14-16 16-18).each do |hour|%>
+                <tr >
+                    <td class="hours"><%= hour %></td>
+                    <% 6.times do |day| %>
+                        <td>
+                            <div class="content"><%= @timetabling["#{hour}#{day}"] %></div>
+                        </td>
+                    <% end %>
+                </tr>
+            <% end %>
+        </table>
+      </ul>
+    </div>
+    <% if see_edit?(@user) %>
+        <%= button_to "Editar grade horário", edit_user_timetabling_path(@user,0), :class => "btn btn-default", :method => :get %>
+    <% end %>
+</div>

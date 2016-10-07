@@ -23,10 +23,16 @@ User.create(email:"admin@zenitaerospace.com",
             role:admin_role)
 
 
+
+
+#### Only for development ####
 NAME = %w[ Artur Marcelo Eduarda Ana ]
 SURNAMES = %w[ Bersan Ferreira Martins ]
-print "Create users: "
+MATR_PREFIX = '14/00000'
+count=10
+print("Create users: \n\t(user,pers_info,aca_info)")
 rg = 1111111
+
 for name in NAME
   for surname in SURNAMES
     full_name = [name, surname].join(' ')
@@ -34,13 +40,30 @@ for name in NAME
     user = User.create(email:email,
                        password:password_load["common_user"]["password"],
                        role:roles.sample)
-    personal_info = PersonalInformation.create(name: full_name,
-                                               email: email,
-                                               cpf: Faker::CPF.numeric,
-                                               rg: rg,
-                                               user: user)
+    print("\n\t.")
+    PersonalInformation.create(name: full_name,
+                                           email: email,
+                                           cpf: Faker::CPF.numeric,
+                                           rg: rg,
+                                           user: user)
+    print("\t.")
+    AcademicInformation.create(registration: MATR_PREFIX+count.to_s,
+                                admission_year: "01/201"+(count%6).to_s,
+                                current_semester: count%16,
+                                user: user)
+    print("\t.")
+    count += 1                           
     rg += 1
-    print "."
   end
 end
-print "\n"
+
+print("\n")
+print("Create subjects: ")
+SUBJECTS = %w( Calculo Fisica Mecanica-Solidos Algebra-Linear Eletromagnetismo )
+SUBJECTS.each do |subject|
+    Subject.create(name: subject)
+    print('.')
+end
+print("\n")
+
+##############

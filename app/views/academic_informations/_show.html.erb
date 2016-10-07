@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Informações Acadêmicas </h4>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+          <li class='info-group-item'>
+            <label>Matrícula:</label>
+              <%= @academic_information.registration %>
+          </li>
+          <li class='info-group-item'>
+            <label>Semestre/ano de ingresso na UnB:</label>
+              <%= @academic_information.admission_year %>
+          </li>
+          <li class='info-group-item'>
+            <label>Semestre atual:</label>
+              <%= @academic_information.current_semester %>
+          </li>
+      </ul>
+    </div>
+    <% if see_edit?(@academic_information.user) %>
+            <%= button_to "Editar informações acadêmicas", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
+    <% end %>
+</div>
+
+

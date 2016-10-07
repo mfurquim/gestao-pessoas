@@ -6,10 +6,11 @@ class ApplicationController < ActionController::Base
   include Pundit
 
   # Authorization access to actions controller based in role of user
-  rescue_from Pundit::NotAuthorizedError, with: :render_404
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
-  rescue_from ActionController::UnknownController, with: :render_404
-  rescue_from ActiveRecord::RecordNotFound, with: :render_404
+# TODO: Temporary removed to development
+  #rescue_from Pundit::NotAuthorizedError, with: :render_404
+  #rescue_from ActiveRecord::RecordNotFound, with: :render_404
+  #rescue_from ActionController::UnknownController, with: :render_404
+  #rescue_from ActiveRecord::RecordNotFound, with: :render_404
 
   def render_404(exception)
     puts '*' * 100

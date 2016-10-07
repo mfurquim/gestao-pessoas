@@ -10,11 +10,11 @@
     subject.column name: 'Nome disciplina', attribute: 'name' do |subject|
       subject.name
     end
-    subject.column name: 'Editar', attribute: 'name' do |subject|
-      link_to 'Modificar', edit_subject_path(subject)
+    subject.column name: 'Editar' do |subject|
+      link_to( 'Modificar', edit_subject_path(subject))
     end
-    subject.column name: 'Deletar', attribute: 'name' do |subject|
-      link_to 'Deletar', subject, method: :delete, data: { confirm: 'Você tem certeza?' }
+    subject.column name: 'Deletar' do |subject|
+      link_to('Deletar', subject, method: :delete, data: { confirm: 'Você tem certeza?' })
     end
 
   end %>
