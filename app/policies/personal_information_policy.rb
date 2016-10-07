@@ -20,7 +20,7 @@ class PersonalInformationPolicy < ApplicationPolicy
   end
 
   def user_or_high
-    high_user || record.user == user
+    high_users || record.user == user
   end
   private :user_or_high
 end

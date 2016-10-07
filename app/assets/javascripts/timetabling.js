@@ -24,6 +24,7 @@ function getElement(elementFunction){
 
 function showDiscipline(path){
     $('.dis').show();
+    $('button#add').hide();
     $.ajax({
         url: path,
         method: 'GET',
@@ -46,10 +47,25 @@ function updateCoursed(element,path){
         method: 'POST',
         data: {'subject_id': id},
         success: function(message,stats){
-            $(element).remove();
-            $('ul.disok').append(element);
+            a=element
+            var alertMessage = $('.alert');
+            alertMessage.show();
+            alertMessage.removeClass('alert-info');
+            alertMessage.removeClass('alert-warning');
+            if(stats === "success"){
+                alertMessage.text(message.message);
+                alertMessage.addClass('alert-info');
+                $(element).attr('onclick','').unbind('click');
+                $(element).remove();
+                $('ul.disok').append(element);
+            }else{
+                alertMessage.addClass('alert-warning');
+                alertMessage.text("Não foi possível adicionar essa disciplina");
+            }
+            setTimeout(function(){
+                alertMessage.hide();
+            },3000);
             console.log(message);
-            console.log(stats);
         },
         error: function(e){ console.log(e);}
     });

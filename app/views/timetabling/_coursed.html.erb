@@ -7,6 +7,8 @@
       <ul class="disok col-lg-24">
         <% if @subjects.empty? %>
             <div class="alert alert-info" role="alert">Nenhum registro encontrado</div>
+        <% else %>
+            <div class="alert alert-info" role="alert" hidden>Nenhum registro encontrado</div>
         <%end%>
         <% @subjects.each do |subject| %>
         <li><%=subject.name %></li>
@@ -15,7 +17,7 @@
     </div>
     <% if see_edit?(current_user) %>
 
-        <%= button_tag "Adicionar disciplinas",  :class => "btn btn-default", onclick: 'showDiscipline("'+ user_update_coursed_subject_path(@user)+'")'%>
+        <%= button_tag "Adicionar disciplinas",id: 'add',   class: "btn btn-default", onclick: 'showDiscipline("'+ user_update_coursed_subject_path(@user)+'")'%>
     <% end %>
 </div>
 <div class="dis" hidden>

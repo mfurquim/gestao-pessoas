@@ -52,12 +52,12 @@ class TimetablingController < ApplicationController
     # and a discipline id
     def update_coursed
         authorize current_user, :uncourse_subject?
-        subject = Subject.select(:id).where(id: params[:subject_id]).first
+        subject = Subject.select(:id,:name).where(id: params[:subject_id]).first
         academic = AcademicInformation
                                 .where(user_id: params[:user_id]).first
         subject.academic_informations<< academic
         respond_to do |format|
-            format.json { render json: {message: 'Salvo'}, status: :ok }
+            format.json { render json: {message: "Salvo #{subject.name}"}, status: :ok }
         end
     end
 
