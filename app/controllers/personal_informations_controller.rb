@@ -12,6 +12,7 @@ class PersonalInformationsController < ApplicationController
   def new
     @information = PersonalInformation.new
     set_user
+    @information.user= @user
     authorize @information
   end
 

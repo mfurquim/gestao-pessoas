@@ -54,7 +54,9 @@ RSpec.describe AcademicInformationsController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new academic_information as @academic_information" do
-      get :new, params: {}, session: valid_session
+      user = FactoryGirl.create(:user)
+      sign_in user
+      get :new, user_id: user.to_param  
       expect(assigns(:academic_information)).to be_a_new(AcademicInformation)
     end
   end

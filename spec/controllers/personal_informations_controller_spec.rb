@@ -31,6 +31,7 @@ RSpec.describe PersonalInformationsController, type: :controller do
     it 'assigns a new personal_information as @personal_information' do
       user = FactoryGirl.create(:user)
       sign_in user
+      print(user.personal_information)
       get :new, user_id: user.to_param
       expect(assigns(:information)).to be_a_new(PersonalInformation)
     end
