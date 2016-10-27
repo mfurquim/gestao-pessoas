@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :profissional_informations
   resources :searches
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
