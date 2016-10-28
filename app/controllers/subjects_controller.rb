@@ -8,6 +8,10 @@ class SubjectsController < ApplicationController
   def index
     @subjects = Subject.all
     authorize @subjects
+    search = params[:search]
+    if search
+      @subjects = search_subject(search)
+    end
     @subject_grid = initialize_grid(@subjects)
   end
 
@@ -56,7 +60,7 @@ class SubjectsController < ApplicationController
         format.json { render json: @subject.errors, status: :unprocessable_entity }
       end
     end
-    
+
   end
 
   # DELETE /subjects/1
@@ -68,6 +72,10 @@ class SubjectsController < ApplicationController
       format.html { redirect_to subjects_url, notice: 'Disciplina removida.' }
       format.json { head :no_content }
     end
+  end
+
+  def search_subject(keyword)
+    subject = Subject.select(:name, :id).where('name LIKE ?', "%#{keyword}%")
   end
 
   private
