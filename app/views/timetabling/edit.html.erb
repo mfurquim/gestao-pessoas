@@ -1,10 +1,16 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Editar grade horária</h4>
+    <div class="contentName">
+        <h4>Editar grade horária</h4>
+    </div>
+      <div class="contentButton">
+        <% if see_edit?(current_user) %>
+            <%= button_to "Concluir edição", [@academic_information.user,@academic_information], :class => "btn btn-primary", :method => :get %>
+        <% end %>
+      </div>
   </div>
   <div class="panel-body">
 
 <%= render 'form' %>
   </div>
 </div>
-<%= link_to 'Ver perfil acadêmico', [@academic_information.user,@academic_information] %> |

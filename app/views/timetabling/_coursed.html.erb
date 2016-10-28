@@ -1,6 +1,11 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Disciplinas cursadas</h4>
+    <div class="contentName">
+        <h4>Disciplinas cursadas</h4>
+    </div>
+      <div class="contentButton">
+           <%= button_tag "Adicionar disciplinas",id: 'add',   class: "btn btn-primary", onclick: 'showDiscipline("'+ user_update_coursed_subject_path(@user)+'")'%>
+      </div>
   </div>
 
     <div class="panel-body">
@@ -15,10 +20,6 @@
         <% end %>
       </ul>
     </div>
-    <% if see_edit?(current_user) %>
-
-        <%= button_tag "Adicionar disciplinas",id: 'add',   class: "btn btn-default", onclick: 'showDiscipline("'+ user_update_coursed_subject_path(@user)+'")'%>
-    <% end %>
 </div>
 <div class="dis" hidden>
     <ul>
