@@ -1,2 +1,2 @@
-class ExtraSkill < ActiveRecord::Base
+class ExtraSkill < ProfessionalInformation
 end

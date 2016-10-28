@@ -1,0 +1,2 @@
+module ProfessionalInformationsHelper
+end

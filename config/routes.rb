@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+  resources :professional_profiles
+  resources :professional_informations
   resources :extra_skills
   resources :external_projects
   resources :internships
-  resources :profissional_informations
   resources :searches
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'

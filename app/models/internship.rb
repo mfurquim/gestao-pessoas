@@ -1,2 +1,2 @@
-class Internship < ActiveRecord::Base
+class Internship < ProfessionalInformation
 end

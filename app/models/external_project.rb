@@ -1,2 +1,2 @@
-class ExternalProject < ActiveRecord::Base
+class ExternalProject < ProfessionalInformation
 end
