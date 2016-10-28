@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  resources :extra_skills
+  resources :external_projects
+  resources :internships
   resources :profissional_informations
   resources :searches
   resources :users, only: [:index] do
