@@ -1,6 +1,13 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h4>Informações Acadêmicas </h4>
+        <div class="contentName">
+             <h4>Informações Acadêmicas</h4>
+       </div>
+         <div class="contentButton">
+            <% if see_edit?(@academic_information.user) %>
+                <%= button_to "Editar informações acadêmicas", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-primary", :method => :get %>
+            <% end %>
+        </div>
     </div>
     <div class="row">
       <ul class="col-sm-12 info-group">
@@ -18,9 +25,7 @@
           </li>
       </ul>
     </div>
-    <% if see_edit?(@academic_information.user) %>
-            <%= button_to "Editar informações acadêmicas", edit_user_academic_information_path(@academic_information.user,@academic_information), :class => "btn btn-default", :method => :get %>
-    <% end %>
+    
 </div>
 
 

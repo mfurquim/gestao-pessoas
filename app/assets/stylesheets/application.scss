@@ -39,4 +39,19 @@ a, a:hover,a:active,a:visited{
     min-width: 320px;
   }
 }
+.contentName{
+  width: 300px; 
+  float: left; 
 
+}
+.contentButton{
+  float: right; 
+  height: 0; 
+  border-top: 0;
+}
+.panel-heading {
+  overflow: auto;
+}
+.row {
+  padding: 20px;
+}
