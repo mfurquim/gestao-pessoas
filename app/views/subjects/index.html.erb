@@ -1,23 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="contentName">
+             <strong><h4>Listando as disciplinas</h2></strong>
+       </div>
+         <div class="contentButton">
+                <%= button_to "Adicionar nova matéria", new_subject_path, :class => "btn btn-primary", :method => :get %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="tab-content">
+      <%= grid(@subject_grid, show_filters: :when_filtered) do |subject|
+        subject.blank_slate do
+          '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
+        end
+        subject.column name: 'Nome disciplina', attribute: 'name' do |subject|
+          subject.name
+        end
+        subject.column name: 'Editar' do |subject|
+          link_to( 'Modificar', edit_subject_path(subject))
+        end
+        subject.column name: 'Deletar' do |subject|
+          link_to('Deletar', subject, method: :delete, data: { confirm: 'Você tem certeza?' })
+        end
 
-<h1>Listando as disciplinas</h1>
-
-<div class="tab-content">
-  <%= grid(@subject_grid, show_filters: :when_filtered) do |subject|
-    subject.blank_slate do
-      '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
-    end
-    subject.column name: 'Nome disciplina', attribute: 'name' do |subject|
-      subject.name
-    end
-    subject.column name: 'Editar' do |subject|
-      link_to( 'Modificar', edit_subject_path(subject))
-    end
-    subject.column name: 'Deletar' do |subject|
-      link_to('Deletar', subject, method: :delete, data: { confirm: 'Você tem certeza?' })
-    end
-
-  end %>
+      end %>
+    </div>
+    </div>
+    
 </div>
-
-<%= link_to 'Nova matéria ', new_subject_path %>
