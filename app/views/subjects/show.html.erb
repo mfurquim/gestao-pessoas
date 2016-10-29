@@ -1,9 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="contentName">
+             <h4>Disciplina</h4>
+       </div>
+         <div class="contentButton">
+            <% if see_edit?(@subject.name) %>
+                <%= button_to "Editar disciplina", edit_subject_path(@subject), :class => "btn btn-primary", :method => :get %>
+            <% end %>
+        </div>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+         <li class='info-group-item'>
+            <label>Nome:</label>
+  			<%= @subject.name %>
+		</li>
+      </ul>
+    </div>    
+</div>
+<%= button_to "Voltar", subjects_path, :class => "btn btn-primary", :method => :get %>
 
-<p>
-  <strong>Name:</strong>
-  <%= @subject.name %>
-</p>
 
-<%= link_to 'Editar', edit_subject_path(@subject) %> |
-<%= link_to 'Voltar', subjects_path %>
