@@ -6,9 +6,15 @@ Realizar busca
 <% end %>
 
 <% if @results.present? %>
-  <% @results.each do |result|%>
-    <%= result%>
+
+  <% @results.each do |result, matrix|%>
+    <% matrix.each do |array|%>
+      <% array.each do |element|%>
+        <%= element.email %>
+      <% end %>
+    <% end %>
   <% end %>
+
 <% else %>
   <p>Não tem nenhum usuário com esse parametro <%= params[:search] %>.</p>
 <% end %>
