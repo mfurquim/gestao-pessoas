@@ -1,17 +1,18 @@
-<%= form_for(@external_project) do |f| %>
-  <% if @external_project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@external_project.errors.count, "error") %> prohibited this external_project from being saved:</h2>
-
-      <ul>
-      <% @external_project.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for([@professional_profile.user,@professional_profile,@external_project]) do |f| %>
+ <%= render 'layouts/error_messages', object: f.object %>
+ <div class="form-group">
+   <%= f.label :name, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :name, class: "form-control" %>
+   </div>
+ </div> 
+ <div class="form-group">
+   <%= f.label :location, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :location, class: "form-control" %>
+   </div>
+ </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  class:  "btn btn-default"%>
   </div>
 <% end %>
