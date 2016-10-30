@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Estágios </h4>
+    </div>
+    <div class="panel-body">
+      <ul class='col-sm-12 info-group'>
+        <% informations( @professional_profile.informations, Internship.name ).each do |internship| %>
+        <li class='list-group-item'>
+          <div class="row">
+            <div class='col-sm-8'>
+              <label>Nome: </label> <%= internship.name %> por <%= internship.duration %> <%= "hora".pluralize(internship.duration) %> <p>
+              <label>Company: </label> <%= internship.company %>
+            </div>
+            <div class='col-sm-4'>
+              <%= link_to "Editar",  edit_user_professional_profile_internship_path(@professional_profile.user,@professional_profile,internship), :class => "btn btn-default", :method => :get %>
+              <%= link_to "Excluir",  user_professional_profile_internship_path(@professional_profile.user,@professional_profile,internship), :class => "btn btn-default", :method => :delete, data:{ confirm: "Certeza?"} %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to "Novos estágios", new_user_professional_profile_internship_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
+    </div>
+</div>

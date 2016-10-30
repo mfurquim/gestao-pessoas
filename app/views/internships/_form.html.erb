@@ -1,17 +1,30 @@
-<%= form_for(@internship) do |f| %>
-  <% if @internship.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@internship.errors.count, "error") %> prohibited this internship from being saved:</h2>
-
-      <ul>
-      <% @internship.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+<%= form_for([@professional_profile.user,@professional_profile,@internship]) do |f| %>
+ <%= render 'layouts/error_messages', object: f.object %>
+ <div class="form-group">
+   <%= f.label :name, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :name, class: "form-control" %>
+   </div>
+ </div> 
+ <div class="form-group">
+   <%= f.label :company, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :company, class: "form-control" %>
+   </div>
+ </div> 
+ <div class="form-group">
+   <%= f.label :description, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :description, class: "form-control" %>
+   </div>
+ </div> 
+ <div class="form-group">
+   <%= f.label "Duração (horas)" , class: 'col-xs-3' %> 
+   <div class='col-xs-9'>
+     <%= f.number_field :duration, class: "form-control" %>
+   </div>
+ </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  class:  "btn btn-default"%>
   </div>
 <% end %>

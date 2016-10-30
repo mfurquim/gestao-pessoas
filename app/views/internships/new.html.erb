@@ -1,5 +1,10 @@
-<h1>New Internship</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Novo estágio</h4>
+  </div>
+  <div class="panel-body">
 
-<%= render 'form' %>
-
-<%= link_to 'Back', internships_path %>
+    <%= render 'form' %>
+  </div>
+  <%= link_to 'Voltar', [@professional_profile.user,@professional_profile], class:'btn btn-default' %> 
+</div>

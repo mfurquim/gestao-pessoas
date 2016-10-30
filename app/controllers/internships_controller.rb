@@ -1,6 +1,6 @@
 class InternshipsController < ApplicationController
   before_action :set_internship, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_profile
   # GET /internships
   # GET /internships.json
   def index
@@ -27,8 +27,8 @@ class InternshipsController < ApplicationController
     @internship = Internship.new(internship_params)
 
     respond_to do |format|
-      if @internship.save
-        format.html { redirect_to @internship, notice: 'Internship was successfully created.' }
+      if @professional_profile.add_information(@internship)
+        format.html { redirect_to [@professional_profile.user,@professional_profile,@internship], notice: 'Internship was successfully created.' }
         format.json { render :show, status: :created, location: @internship }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class InternshipsController < ApplicationController
   def update
     respond_to do |format|
       if @internship.update(internship_params)
-        format.html { redirect_to @internship, notice: 'Internship was successfully updated.' }
+        format.html { redirect_to [@professional_profile.user,@professional_profile,@internship], notice: 'Internship was successfully updated.' }
         format.json { render :show, status: :ok, location: @internship }
       else
         format.html { render :edit }
@@ -54,9 +54,9 @@ class InternshipsController < ApplicationController
   # DELETE /internships/1
   # DELETE /internships/1.json
   def destroy
-    @internship.destroy
+    @professional_profile.remove_information(@internship)
     respond_to do |format|
-      format.html { redirect_to internships_url, notice: 'Internship was successfully destroyed.' }
+      format.html { redirect_to [@professional_profile.user,@professional_profile], notice: 'Internship was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,9 +66,11 @@ class InternshipsController < ApplicationController
     def set_internship
       @internship = Internship.find(params[:id])
     end
-
+    def set_profile
+      @professional_profile = ProfessionalProfile.find(params[:professional_profile_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def internship_params
-      params.fetch(:internship, {})
+      params.require(:internship).permit(:name, :company, :description, :duration)
     end
 end

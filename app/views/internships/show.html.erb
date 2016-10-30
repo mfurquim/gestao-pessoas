@@ -1,4 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Estágio </h4>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+          <li class='info-group-item'>
+            <label>Nome:</label>
+              <%= @internship.name %>
+          </li>
+          <li class='info-group-item'>
+            <label>Empresa:</label>
+              <%= @internship.company %>
+          </li>
+          <li class='info-group-item'>
+            <label>Descrição:</label>
+              <%= @internship.description %>
+          </li>
+          <li class='info-group-item'>
+            <label>Duração em horas:</label>
+              <%= @internship.duration %>
+          </li>
+      </ul>
+    </div>
+    <%= button_to "Editar habilidade extra",  edit_user_professional_profile_internship_path(@professional_profile.user,@professional_profile,@internship), :class => "btn btn-default", :method => :get %>
+</div>
 
-<%= link_to 'Edit', edit_internship_path(@internship) %> |
-<%= link_to 'Back', internships_path %>
+
