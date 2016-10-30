@@ -1,27 +1,27 @@
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h4>Preencha os formularios </h4>
+    <h4>Preencha o formulário </h4>
   </div>
-<p id="notice"><%= notice %></p>
-<div class="row">
-  <ul class="info-group">
-      <li class='info-group-item'>
-        <label>Nome do projeto:</label>
-  		  <%= @project.project_name %>
-      </li>
-      <li class='info-group-item'>
-        <label>Descrição do projeto:</label>
-          <%= @project.project_description %>
-      </li>
-      <li class='info-group-item'>
-        <label>Nome do gestor:</label>
-          <%= @project.manager_name %>
-      </li>
-  </ul>
+
+  <div class="row">
+    <ul class="info-group">
+        <li class='info-group-item'>
+          <label>Nome do projeto:</label>
+    		  <%= @project.project_name %>
+        </li>
+        <li class='info-group-item'>
+          <label>Descrição do projeto:</label>
+            <%= @project.project_description %>
+        </li>
+        <li class='info-group-item'>
+          <label>Nome do gestor:</label>
+            <%= @project.manager_name %>
+        </li>
+    </ul>
+  </div>
 </div>
 
-</div>
-<%= button_to "Editar", edit_project_path(@project), :class => "btn btn-default", :method => :get %>
-<%= button_to 'Voltar', projects_path, :class => "btn btn-default", :method => :get %>
+<%= button_to "Editar", edit_project_path(@project), :class => "btn btn-primary", :method => :get %>
+<%= button_to 'Voltar', projects_path, :class => "btn btn-primary", :method => :get %>
 </div>
 

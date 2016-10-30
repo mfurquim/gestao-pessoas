@@ -2,7 +2,7 @@
 
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h2>Lista de todos os projetos</h2>
+    <h4>Lista de todos os projetos</h4>
   </div>
 <% unless @projects.empty? %>
     <input hidden value="haha"></input>
@@ -27,5 +27,4 @@
 <% end %>
 
 </div>
-
-<%= link_to 'Registrar novo projeto', new_project_path %>
+<%= button_to 'Registrar novo projeto', new_project_path, :class => "btn btn-primary", :method => :get %>
