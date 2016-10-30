@@ -49,6 +49,7 @@ Rails.application.routes.draw do
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"
   get "my_subjects" => "users#my_subjects"
+  get "my_professional_profile" => "users#my_professional_profile"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

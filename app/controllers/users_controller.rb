@@ -56,11 +56,17 @@ class UsersController < ApplicationController
     @timetabling = Timetabling.where(academic_information: @user.academic_information).map{ |clas| [clas.table_position,clas.subject.name]}.to_h
     render :academic_information
   end
-
   def my_subjects
     @user = current_user
     authorize @user, :my_subjects?
     render :subject
+  end
+  def my_professional_profile
+    @user = current_user
+    
+    ProfessionalProfile.create(user:@user) if @user.professional_profile.nil?
+    authorize @user, :profile?
+    redirect_to [@user,@user.professional_profile]
   end
 
   private :id_params

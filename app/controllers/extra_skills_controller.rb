@@ -27,7 +27,7 @@ class ExtraSkillsController < ApplicationController
     @extra_skill = ExtraSkill.new(extra_skill_params)
 
     respond_to do |format|
-      if @extra_skill.save
+      if @professional_profile.add_information(@extra_skill)
         format.html { redirect_to [@professional_profile.user, @professional_profile, @extra_skill], notice: 'Extra skill was successfully created.' }
         format.json { render :show, status: :created, location: @extra_skill }
       else
@@ -54,7 +54,7 @@ class ExtraSkillsController < ApplicationController
   # DELETE /extra_skills/1
   # DELETE /extra_skills/1.json
   def destroy
-    @extra_skill.destroy
+    @professional_profile.remove_information(@extra_skill)
     respond_to do |format|
       format.html { redirect_to [@professional_profile.user, @professional_profile], notice: 'Extra skill was successfully destroyed.' }
       format.json { head :no_content }
@@ -66,13 +66,13 @@ class ExtraSkillsController < ApplicationController
     def set_extra_skill
       @extra_skill = ExtraSkill.find(params[:id])
     end
-    def set_profile
 
+    def set_profile
       @professional_profile = ProfessionalProfile.find(params[:professional_profile_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extra_skill_params
-      params.require(:extra_skill).permit(:name,:level,:professional_profile_id)
+      params.require(:extra_skill).permit(:name,:level)
     end
 end

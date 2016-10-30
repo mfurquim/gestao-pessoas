@@ -12,7 +12,8 @@ class ProfessionalProfile < ProfessionalInformation
   def add_information(professional_information = nil)
     initialize_list
     unless professional_information.nil?
-      professional_information.update(professional_profile_id: self.id)
+      professional_information.professional_profile_id= self.id
+      professional_information.save
       self.informations << professional_information
     end
   end

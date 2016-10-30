@@ -1,2 +1,7 @@
 <p id="notice"><%= notice %></p>
+<% @professional_profile.informations.each do |information|%>
+  <%= information.name %><br>
+<% end %>
 
+<%= link_to "Novas habilidades", new_user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %> 
+<%= link_to "Novos projetos externos", new_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
