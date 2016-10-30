@@ -69,6 +69,6 @@ class ExtraSkillsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extra_skill_params
-      params.fetch(:extra_skill, {})
+      params.require(:extra_skill).permit(:name,:level)
     end
 end

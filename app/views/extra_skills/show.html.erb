@@ -1,4 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Habilidade Extra </h4>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+          <li class='info-group-item'>
+            <label>Nome:</label>
+              <%= @extra_skill.name %>
+          </li>
+          <li class='info-group-item'>
+            <label>Nivel:</label>
+              <%= skill_level(@extra_skill.level) %>
+          </li>
+      </ul>
+    </div>
+    <%= button_to "Editar habilidade extra",  edit_extra_skill_path(@extra_skill), :class => "btn btn-default", :method => :get %>
+</div>
 
-<%= link_to 'Edit', edit_extra_skill_path(@extra_skill) %> |
-<%= link_to 'Back', extra_skills_path %>

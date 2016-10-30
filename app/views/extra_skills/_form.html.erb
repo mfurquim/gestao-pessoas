@@ -1,17 +1,18 @@
 <%= form_for(@extra_skill) do |f| %>
-  <% if @extra_skill.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@extra_skill.errors.count, "error") %> prohibited this extra_skill from being saved:</h2>
-
-      <ul>
-      <% @extra_skill.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
+ <%= render 'layouts/error_messages', object: f.object %>
+ <div class="form-group">
+   <%= f.label :name, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.text_field :name, class: "form-control" %>
+   </div>
+ </div> 
+ <div class="form-group">
+   <%= f.label :level, class: 'col-xs-3' %>
+   <div class='col-xs-9'>
+     <%= f.select :level, selection_level %>
+   </div>
+ </div> 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  class:  "btn btn-default"%>
   </div>
 <% end %>
