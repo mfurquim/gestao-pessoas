@@ -1,6 +1,6 @@
 class ExtraSkillsController < ApplicationController
   before_action :set_extra_skill, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_profile
   # GET /extra_skills
   # GET /extra_skills.json
   def index
@@ -28,7 +28,7 @@ class ExtraSkillsController < ApplicationController
 
     respond_to do |format|
       if @extra_skill.save
-        format.html { redirect_to @extra_skill, notice: 'Extra skill was successfully created.' }
+        format.html { redirect_to [@professional_profile.user, @professional_profile, @extra_skill], notice: 'Extra skill was successfully created.' }
         format.json { render :show, status: :created, location: @extra_skill }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ExtraSkillsController < ApplicationController
   def update
     respond_to do |format|
       if @extra_skill.update(extra_skill_params)
-        format.html { redirect_to @extra_skill, notice: 'Extra skill was successfully updated.' }
+        format.html { redirect_to [@professional_profile.user, @professional_profile, @extra_skill], notice: 'Extra skill was successfully updated.' }
         format.json { render :show, status: :ok, location: @extra_skill }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class ExtraSkillsController < ApplicationController
   def destroy
     @extra_skill.destroy
     respond_to do |format|
-      format.html { redirect_to extra_skills_url, notice: 'Extra skill was successfully destroyed.' }
+      format.html { redirect_to [@professional_profile.user, @professional_profile], notice: 'Extra skill was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -66,9 +66,13 @@ class ExtraSkillsController < ApplicationController
     def set_extra_skill
       @extra_skill = ExtraSkill.find(params[:id])
     end
+    def set_profile
+
+      @professional_profile = ProfessionalProfile.find(params[:professional_profile_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def extra_skill_params
-      params.require(:extra_skill).permit(:name,:level)
+      params.require(:extra_skill).permit(:name,:level,:professional_profile_id)
     end
 end

@@ -12,8 +12,8 @@
   <tbody>
     <% @extra_skills.each do |extra_skill| %>
       <tr>
-        <td><%= extra_skill.name %>
-        <td><%= skill_level(extra_skill.level) %>
+        <td><%= extra_skill.name %></td>
+        <td><%= skill_level(extra_skill.level) %></td>
         <td><%= link_to 'Show', extra_skill %></td>
         <td><%= link_to 'Edit', edit_extra_skill_path(extra_skill) %></td>
         <td><%= link_to 'Destroy', extra_skill, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Extra skill', new_extra_skill_path %>
+<%= link_to 'New Extra skill',  new_user_professional_profile_extra_skill_path %>

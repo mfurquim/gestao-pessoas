@@ -1,6 +1,7 @@
 class ProfessionalProfile < ProfessionalInformation
   attr_accessor :informations
   after_initialize :initialize_list
+  belongs_to :user
   
   # Return the list of informations for the professional profile from a user
   def professional_informations

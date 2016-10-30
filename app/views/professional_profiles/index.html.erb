@@ -6,15 +6,17 @@
   <thead>
     <tr>
       <th colspan="3"></th>
+      <th>lala</td>
     </tr>
   </thead>
 
   <tbody>
     <% @professional_profiles.each do |professional_profile| %>
       <tr>
-        <td><%= link_to 'Show', professional_profile %></td>
-        <td><%= link_to 'Edit', edit_professional_profile_path(professional_profile) %></td>
-        <td><%= link_to 'Destroy', professional_profile, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>professional_profile</td>
+        <td><%= link_to 'Show',  user_professional_profile_path(professional_profile.user,professional_profile) %></td>
+        <td><%= link_to 'Edit', edit_user_professional_profile_path(professional_profile.user,professional_profile) %></td>
+        <td><%= link_to 'Destroy', user_professional_profile_path(professional_profile.user,professional_profile), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Professional profile', new_professional_profile_path %>
+<%= link_to 'New Professional profile',  new_user_professional_profile_path  %>

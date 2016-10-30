@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :professional_profiles
   resources :professional_informations
-  resources :extra_skills
-  resources :external_projects
-  resources :internships
   resources :searches
+
   resources :users, only: [:index] do
     get 'edit_role' => 'roles#edit'
     post 'edit_role' => 'roles#update'
@@ -43,6 +40,11 @@ Rails.application.routes.draw do
     get 'coursed_subject' => 'timetabling#made_subject'
     get 'update_coursed_subject' => 'timetabling#uncourse_subject'
     post 'update_coursed_subject' => 'timetabling#update_coursed'
+    resources :professional_profiles, only:[:show] do
+      resources :extra_skills
+      resources :external_projects
+      resources :internships
+    end
   end
   root 'users/sessions#new'
   get "my_academic_information" => "users#my_academic_informations"
