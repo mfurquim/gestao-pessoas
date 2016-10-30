@@ -14,7 +14,9 @@ class ProfessionalProfilesController < ApplicationController
 
   # GET /professional_profiles/new
   def new
-    @professional_profile = ProfessionalProfile.new
+    @user = User.find(params[:user_id])
+    @professional_profile = ProfessionalProfile.create(user: @user)
+    redirect_to [@user,@professional_profile]
   end
 
   # GET /professional_profiles/1/edit

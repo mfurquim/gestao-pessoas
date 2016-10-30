@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Projetos externos </h4>
+    </div>
+    <div class="panel-body">
+      <ul class='col-sm-12 info-group'>
+        <% informations( @professional_profile.informations, ExternalProject.name ).each do |external_project| %>
+        <li class='list-group-item'>
+          <div class="row">
+            <div class='col-sm-8'>
+              <label>Nome: </label> <%= external_project.name %> <p>
+              <label>Local: </label> <%= external_project.location %>
+            </div>
+            <div class='col-sm-4'>
+              <%= link_to "Editar",  edit_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile,external_project), :class => "btn btn-default", :method => :get %>
+              <%= link_to "Excluir",  user_professional_profile_external_project_path(@professional_profile.user,@professional_profile,external_project), :class => "btn btn-default", :method => :delete, data:{ confirm: "Certeza?"} %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to "Novos projetos externos", new_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
+    </div>
+</div>

@@ -1,7 +1,14 @@
-<p id="notice"><%= notice %></p>
-<% @professional_profile.informations.each do |information|%>
-  <%= information.name %><br>
-<% end %>
-
-<%= link_to "Novas habilidades", new_user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %> 
-<%= link_to "Novos projetos externos", new_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
+<div class="info-title">
+    <h1>Informações profissionais</h1>
+</div>
+<div class="row">
+<%= render 'internships/index' %>
+<%= render 'external_projects/index' %>
+<%= render 'extra_skills/index' %>
+</div>
+<div class="row">
+    <%= link_to "Novas habilidades", new_user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %> 
+    <%= link_to "Novos projetos externos", new_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
+    <%= link_to "Novos estágios", new_user_professional_profile_internship_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %>
+</div>
+<p>

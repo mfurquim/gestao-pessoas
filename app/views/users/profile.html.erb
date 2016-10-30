@@ -35,3 +35,12 @@
         new_user_academic_information_path(@user), :class => "btn btn-default",
         :method => :get %>
 <% end %>
+
+<% if not @user.professional_profile.nil? %>
+    <% @professional_profile = @user.professional_profile %>
+    <%= render partial: 'external_projects/index' %>
+    <%= render partial: 'internships/index' %>
+    <%= render partial: 'extra_skills/index' %>
+<% elsif @user.eql? current_user or policy(current_user).create? %>
+    <%= link_to 'Adicionar informações profissionais', new_user_professional_profile_path(@user) %>
+<% end %>

@@ -40,7 +40,7 @@ Rails.application.routes.draw do
     get 'coursed_subject' => 'timetabling#made_subject'
     get 'update_coursed_subject' => 'timetabling#uncourse_subject'
     post 'update_coursed_subject' => 'timetabling#update_coursed'
-    resources :professional_profiles, only:[:show] do
+    resources :professional_profiles, only:[:show,:new] do
       resources :extra_skills
       resources :external_projects
       resources :internships

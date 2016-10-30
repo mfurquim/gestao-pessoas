@@ -11,6 +11,7 @@ class AddAttributes < ActiveRecord::Migration
       t.references :professional_profile
     end
     change_table :internships do |t|
+      t.string :name
       t.string :company
       t.string :description
       t.integer :duration
