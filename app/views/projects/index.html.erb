@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Lista de todos os projetos</h4>
+  </div>
+<% unless @projects.empty? %>
+    <input hidden value="haha"></input>
+    <%= grid(@projects, show_filters: :when_filtered) do |project_grid|
+
+        project_grid.blank_slate  do
+            '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
+        end
+        project_grid.column name: 'Nome do projeto', attribute: 'project_name' do |project|
+            project.project_name
+        end
+        project_grid.column name: 'Descrição do projeto', attribute: 'project_description' do |project|
+            project.project_description
+        end
+        project_grid.column name: 'Nome do gestor', attribute: 'manager_name' do |project|
+            project.manager_name
+        end
+   
+    end %>
+<% else %>
+    <h1> Nenhum registro </h1>
+<% end %>
+
+</div>
+<%= button_to 'Registrar novo projeto', new_project_path, :class => "btn btn-primary", :method => :get %>

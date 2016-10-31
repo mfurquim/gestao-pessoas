@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>Editar projeto</h4>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
+<%= button_to "Show", @project, :class => "btn btn-default", :method => :get %>
+<%= button_to 'Voltar', projects_path, :class => "btn btn-default", :method => :get %>
