@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   belongs_to :role
   has_one :personal_information
   has_one :academic_information
+  has_one :professional_profile
 
   def role?(role)
     equals = false

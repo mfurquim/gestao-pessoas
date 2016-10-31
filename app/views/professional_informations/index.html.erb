@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Professional Informations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>String</th>
+      <th>String</th>
+      <th>Date</th>
+      <th>Date</th>
+      <th>Text</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @professional_informations.each do |professional_information| %>
+      <tr>
+        <td><%= professional_information.string %></td>
+        <td><%= professional_information.string %></td>
+        <td><%= professional_information.date %></td>
+        <td><%= professional_information.date %></td>
+        <td><%= professional_information.text %></td>
+        <td><%= link_to 'Show', professional_information %></td>
+        <td><%= link_to 'Edit', edit_professional_information_path(professional_information) %></td>
+        <td><%= link_to 'Destroy', professional_information, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Professional information', new_professional_information_path %>

@@ -1,14 +1,6 @@
 <%= form_for [@user,@information], role: "form", html: { multipart: true, class: 'form-horizontal' } do |f| %>
   <%= render 'layouts/error_messages', object: f.object %>
 
- <!--     <div class="medium-6 columns">
-      <div class="column">
-        <img class="thumbnail" src="http://placehold.it/250x250">
-      </div>
-        <ul class="menu">
-      <input type="file" id="myFile">
-        </ul>
-      </div> -->
   <div class="form-group">
     <%= f.label :name, class: 'col-xs-3' %>
     <div class="col-xs-9">

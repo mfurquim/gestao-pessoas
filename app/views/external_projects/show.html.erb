@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Habilidade Extra </h4>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+          <li class='info-group-item'>
+            <label>Nome:</label>
+              <%= @external_project.name %>
+          </li>
+          <li class='info-group-item'>
+            <label>Local:</label>
+              <%= @external_project.location %>
+          </li>
+      </ul>
+    </div>
+    <%= button_to "Editar habilidade extra",  edit_user_professional_profile_external_project_path(@professional_profile.user,@professional_profile,@external_project), :class => "btn btn-default", :method => :get %>
+</div>
+

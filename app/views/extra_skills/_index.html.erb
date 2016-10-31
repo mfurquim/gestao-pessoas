@@ -1,0 +1,24 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Habilidades extras </h4>
+    </div>
+    <div class="panel-body">
+      <ul class='col-sm-12 info-group'>
+        <% informations( @professional_profile.informations, ExtraSkill.name ).each do |extra_skill| %>
+        <li class='list-group-item'>
+          <div class="row">
+            <div class='col-sm-8'>
+              <label>Name: </label> <%= extra_skill.name %><p>
+              <label>Nível: </label> <%= skill_level(extra_skill.level) %>
+            </div>
+            <div class='col-sm-4'>
+              <%= link_to "Editar",  edit_user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile,extra_skill), :class => "btn btn-default", :method => :get %>
+              <%= link_to "Excluir",  user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile,extra_skill), :class => "btn btn-default", :method => :delete, data:{ confirm: "Certeza?"} %>
+            </div>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <%= link_to "Novas habilidades", new_user_professional_profile_extra_skill_path(@professional_profile.user,@professional_profile), :class => "btn btn-default", :method => :get %> 
+    </div>
+</div>
