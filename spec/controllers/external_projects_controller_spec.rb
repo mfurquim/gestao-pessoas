@@ -51,14 +51,14 @@ RSpec.describe ExternalProjectsController, type: :controller do
       expect(assigns(:external_project)).to eq(external_project)
     end
   end
-
+=begin
   describe "GET #new" do
     it "assigns a new external_project as @external_project" do
       get :new, params: {}, session: valid_session
       expect(assigns(:external_project)).to be_a_new(ExternalProject)
     end
   end
-
+=end
   describe "GET #edit" do
     it "assigns the requested external_project as @external_project" do
       external_project = ExternalProject.create! valid_attributes

@@ -51,14 +51,14 @@ RSpec.describe ExtraSkillsController, type: :controller do
       expect(assigns(:extra_skill)).to eq(extra_skill)
     end
   end
-
+=begin
   describe "GET #new" do
     it "assigns a new extra_skill as @extra_skill" do
       get :new, params: {}, session: valid_session
       expect(assigns(:extra_skill)).to be_a_new(ExtraSkill)
     end
   end
-
+=end
   describe "GET #edit" do
     it "assigns the requested extra_skill as @extra_skill" do
       extra_skill = ExtraSkill.create! valid_attributes

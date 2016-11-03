@@ -36,124 +36,30 @@ RSpec.describe ProfessionalProfilesController, type: :controller do
   # ProfessionalProfilesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
-  describe "GET #index" do
-    it "assigns all professional_profiles as @professional_profiles" do
-      professional_profile = ProfessionalProfile.create! valid_attributes
-      get :index, params: {}, session: valid_session
-      expect(assigns(:professional_profiles)).to eq([professional_profile])
-    end
-  end
-
   describe "GET #show" do
     it "assigns the requested professional_profile as @professional_profile" do
       professional_profile = ProfessionalProfile.create! valid_attributes
-      get :show, params: {id: professional_profile.to_param}, session: valid_session
+      get :show, params: {id: professional_profile.to_param, user_id: 1}, session: valid_session
       expect(assigns(:professional_profile)).to eq(professional_profile)
     end
   end
 
   describe "GET #new" do
+    it "create a new professional_profile" do
+      user = FactoryGirl.create(:user)
+      sign_in user
+      expect {get :new, user_id: user.id}.to change(ProfessionalProfile, :count).by(1)
+    end
     it "assigns a new professional_profile as @professional_profile" do
-      get :new, params: {}, session: valid_session
-      expect(assigns(:professional_profile)).to be_a_new(ProfessionalProfile)
+      user = FactoryGirl.create(:user)
+      get :new, user_id: user.id
+      expect(assigns(:professional_profile)).to be_a(ProfessionalProfile)
+      expect(assigns(:professional_profile)).to be_persisted
+    end
+    it "redirect created to professional profiles" do
+      user = FactoryGirl.create(:user)
+      get :new, user_id: user.id
+      expect(response).to redirect_to([user,ProfessionalProfile.last])
     end
   end
-
-  describe "GET #edit" do
-    it "assigns the requested professional_profile as @professional_profile" do
-      professional_profile = ProfessionalProfile.create! valid_attributes
-      get :edit, params: {id: professional_profile.to_param}, session: valid_session
-      expect(assigns(:professional_profile)).to eq(professional_profile)
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new ProfessionalProfile" do
-        expect {
-          post :create, params: {professional_profile: valid_attributes}, session: valid_session
-        }.to change(ProfessionalProfile, :count).by(1)
-      end
-
-      it "assigns a newly created professional_profile as @professional_profile" do
-        post :create, params: {professional_profile: valid_attributes}, session: valid_session
-        expect(assigns(:professional_profile)).to be_a(ProfessionalProfile)
-        expect(assigns(:professional_profile)).to be_persisted
-      end
-
-      it "redirects to the created professional_profile" do
-        post :create, params: {professional_profile: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(ProfessionalProfile.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns a newly created but unsaved professional_profile as @professional_profile" do
-        post :create, params: {professional_profile: invalid_attributes}, session: valid_session
-        expect(assigns(:professional_profile)).to be_a_new(ProfessionalProfile)
-      end
-
-      it "re-renders the 'new' template" do
-        post :create, params: {professional_profile: invalid_attributes}, session: valid_session
-        expect(response).to render_template("new")
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested professional_profile" do
-        professional_profile = ProfessionalProfile.create! valid_attributes
-        put :update, params: {id: professional_profile.to_param, professional_profile: new_attributes}, session: valid_session
-        professional_profile.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "assigns the requested professional_profile as @professional_profile" do
-        professional_profile = ProfessionalProfile.create! valid_attributes
-        put :update, params: {id: professional_profile.to_param, professional_profile: valid_attributes}, session: valid_session
-        expect(assigns(:professional_profile)).to eq(professional_profile)
-      end
-
-      it "redirects to the professional_profile" do
-        professional_profile = ProfessionalProfile.create! valid_attributes
-        put :update, params: {id: professional_profile.to_param, professional_profile: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(professional_profile)
-      end
-    end
-
-    context "with invalid params" do
-      it "assigns the professional_profile as @professional_profile" do
-        professional_profile = ProfessionalProfile.create! valid_attributes
-        put :update, params: {id: professional_profile.to_param, professional_profile: invalid_attributes}, session: valid_session
-        expect(assigns(:professional_profile)).to eq(professional_profile)
-      end
-
-      it "re-renders the 'edit' template" do
-        professional_profile = ProfessionalProfile.create! valid_attributes
-        put :update, params: {id: professional_profile.to_param, professional_profile: invalid_attributes}, session: valid_session
-        expect(response).to render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested professional_profile" do
-      professional_profile = ProfessionalProfile.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: professional_profile.to_param}, session: valid_session
-      }.to change(ProfessionalProfile, :count).by(-1)
-    end
-
-    it "redirects to the professional_profiles list" do
-      professional_profile = ProfessionalProfile.create! valid_attributes
-      delete :destroy, params: {id: professional_profile.to_param}, session: valid_session
-      expect(response).to redirect_to(professional_profiles_url)
-    end
-  end
-
 end
