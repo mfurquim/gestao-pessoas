@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listando as atividades</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome da atividade</th>
+      <th>Descrição resumo</th>
+      <th>Data de início</th>
+      <th>Data de término</th>
+      <th>Foi concluída</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= activity.description %></td>
+        <td><%= activity.begin_date %></td>
+        <td><%= activity.end_date %></td>
+        <td><%= activity.status %></td>
+        <td><%= link_to 'Mostrar', activity %></td>
+        <td><%= link_to 'Editar', edit_activity_path(activity) %></td>
+        <td><%= link_to 'Deletar', activity, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nova atividade', new_activity_path %>

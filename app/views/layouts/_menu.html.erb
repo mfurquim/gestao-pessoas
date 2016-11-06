@@ -8,6 +8,7 @@
         <li><%= link_to 'Minhas disciplinas', user_coursed_subject_path(current_user) , class: 'a menu' %></li>
         <li><%= link_to 'Informações profissionais',  my_professional_profile_path(current_user), class: 'a menu' %></li>
         <li><%= link_to 'Membros', users_path, class: 'a menu' %></li>
+        <li><%= link_to 'Todas atividades', activities_path, class: 'a menu' %></li>
         <% if policy(current_user).create? %>
           <li><%= link_to 'Realizar busca', searches_path %></li>
           <li><%= link_to 'Adicionar membros', new_user_registration_path %></li>
