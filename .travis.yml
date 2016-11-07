@@ -13,3 +13,11 @@ addons:
 language: ruby
 rvm:
   - 2.2.1
+
+after_succes:
+ - "openssl aes-256-cbc -K $encrypted_cab6a4cb5a16_key -iv $encrypted_cab6a4cb5a16_iv -in config/deploy/deploy_id_rsa.enc -out config/deploy/deploy_id_rsa -d"
+ - "eval $(ssh-agent)"
+ - "chmod 600 config/deploy/deploy_id_rsa"
+ - "ssh-add config/deploy/deploy_id_rsa"
+ - "gem install capistrano-rails"
+ - "cap production deploy"

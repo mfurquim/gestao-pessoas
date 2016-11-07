@@ -83,5 +83,8 @@ group :development do
   # Cpf faker
   gem 'cpf_faker'
 
+  # Capistrano to automatize deploy
+  gem 'capistrano-rails', '~> 1.1'
+
 end
 
