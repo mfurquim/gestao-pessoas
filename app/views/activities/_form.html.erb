@@ -1,48 +1,38 @@
-<%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+<%= form_for @activity, role: 'form', html: {multipart: true, class:'horizontal-form'} do |f| %>
+  <%= render 'layouts/error_messages', object: f.object %>
 
-      <ul>
-      <% @activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <%= f.label :name , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.text_field :name , class: 'form-control' %></div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+  <div class="form-group">
+    <%= f.label :description , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.text_area :description , class: 'form-control' %></div>
   </div>
-  <div class="field">
-    <%= f.label :begin_date %><br>
-    <%= f.date_select :begin_date %>
+  <div class="form-group">
+    <%= f.label :begin_date , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.date_select :begin_date , class: 'form-control' %></div>
   </div>
-  <div class="field">
-    <%= f.label :end_date %><br>
-    <%= f.date_select :end_date %>
+  <div class="form-group">
+    <%= f.label :end_date , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.date_select :end_date , class: 'form-control' %></div>
   </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.check_box :status %>
+  <div class="form-group">
+    <%= f.label :status , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.check_box :status , class: 'form-control' %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.select :user_id, User.where.not(role:1).map{ |u| [u.email, u.id] } %>
+  <div class="form-group">
+    <%= f.label :user_id , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.select :user_id, User.where.not(role:1).map{ |u| [u.email, u.id] } , class: 'form-control' %></div>
   </div>
 
-  <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.select :project_id, Project.all.map{|p| [p.name, p.id]} %>
+  <div class="form-group">
+    <%= f.label :project_id , class: 'col-xs-3'%><br>
+    <div class='col-xs-9'><%= f.select :project_id, Project.all.map{|p| [p.name, p.id]} , class: 'form-control' %></div>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary' %>
   </div>
 <% end %>

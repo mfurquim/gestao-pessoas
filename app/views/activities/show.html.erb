@@ -1,29 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>Informações Acadêmicas </h4>
+    </div>
+    <div class="row">
+      <ul class="col-sm-12 info-group">
+          <li class='info-group-item'>
+            <label>Nome:</label>
+              <%= @activity.name %>
+          </li>
+          <li class='info-group-item'>
+            <label>Descrição resumo:</label>
+              <%= @activity.description %>
+          </li>
+          <li class='info-group-item'>
+              <label>Data de início:</label>
+              <%= @activity.begin_date %>
+          </li>
+          <li class='info-group-item'>
+              <label>Data de término:</label>
+              <%= @activity.end_date %>
+          </li>
+          <li class='info-group-item'>
+              <label>Concluida:</label>
+              <%= @activity.status %>
+          </li>
+          <li class='info-group-item'>
+              <label>Executor:</label>
+              <%= @activity.user.email %>
+          </li>
+      </ul>
+    </div>
+    <% if manager? @activity%>
+            <%= button_to "Editar informações acadêmicas", edit_activity_path(@activity), :class => "btn btn-default", :method => :get %>
+    <% end %>
+</div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @activity.name %>
-</p>
-
-<p>
-  <strong>Descrição resumo:</strong>
-  <%= @activity.description %>
-</p>
-
-<p>
-  <strong>Data de início:</strong>
-  <%= @activity.begin_date %>
-</p>
-
-<p>
-  <strong>Data de término:</strong>
-  <%= @activity.end_date %>
-</p>
-
-<p>
-  <strong>Concluida:</strong>
-  <%= @activity.status %>
-</p>
-
-<%= link_to 'Editar', edit_activity_path(@activity) %> |
-<%= link_to 'Voltar', activities_path %>
+<%= button_to 'Editar', edit_activity_path(@activity), class: 'btn btn-default', method: :get %>
+<%= button_to 'Voltar', activities_path, class: 'btn btn-default', method: :get  %>

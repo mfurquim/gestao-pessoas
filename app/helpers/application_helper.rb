@@ -3,6 +3,9 @@ module ApplicationHelper
   def see_edit?(user)
     user.eql?(current_user) || policy(current_user).create?
   end
+  def manager?(activity)
+    policy(activity).project_manager?
+  end
   def bootstrap_class_flash(type)
     case type
       when 'success'

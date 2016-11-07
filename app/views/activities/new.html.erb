@@ -1,5 +1,11 @@
-<h1>New Activity</h1>
 
-<%= render 'form' %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4>New Activity</h4>
 
-<%= link_to 'Voltar', activities_path %>
+  </div>
+  <div class="panel-body">
+    <%= render 'form' %>
+  </div>
+</div>
+<%= button_to 'Voltar', activities_path, class: 'btn btn-default', method: :get %>
