@@ -11,14 +11,14 @@
         project_grid.blank_slate  do
             '<div class="alert alert-info" role="alert">Nenhum registro encontrado</div>'
         end
-        project_grid.column name: 'Nome do projeto', attribute: 'project_name' do |project|
-            project.project_name
+        project_grid.column name: 'Nome do projeto', attribute: 'name' do |project|
+            project.name
         end
-        project_grid.column name: 'Descrição do projeto', attribute: 'project_description' do |project|
-            project.project_description
+        project_grid.column name: 'Descrição do projeto', attribute: 'description' do |project|
+            project.description
         end
-        project_grid.column name: 'Nome do gestor', attribute: 'manager_name' do |project|
-            project.manager_name
+        project_grid.column name: 'Nome do gestor', negation: true, assoc: :user, attribute: 'email' do |project|
+            project.user.email
         end
    
     end %>

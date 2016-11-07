@@ -3,16 +3,16 @@
 <%= render 'layouts/error_messages', object: f.object %>
   
   <div class="form-group">
-    <%= f.label :project_name, class: 'col-xs-3' %>
-    <div class='col-xs-9'><%= f.text_field :project_name, class: "form-control", placeholder: "Ex: Construção de aeromodelo" %></div>
+    <%= f.label :name, class: 'col-xs-3' %>
+    <div class='col-xs-9'><%= f.text_field :name, class: "form-control", placeholder: "Ex: Construção de aeromodelo" %></div>
   </div>
   <div class="form-group">
-    <%= f.label :project_description, class: 'col-xs-3' %>
-    <div class='col-xs-9'><%= f.text_field :project_description, class: "form-control", placeholder: "Ex: Construção de aeromodelo é ..." %></div>
+    <%= f.label :description, class: 'col-xs-3' %>
+    <div class='col-xs-9'><%= f.text_field :description, class: "form-control", placeholder: "Ex: Construção de aeromodelo é ..." %></div>
   </div>
   <div class="form-group">
-    <%= f.label :manager_name, class: 'col-xs-3' %>
-    <div class='col-xs-9'><%= f.text_field :manager_name, class: "form-control", placeholder: "Ex: Ferdinando Valdisney" %></div>
+    <%= f.label :user_id, class: 'col-xs-3' %>
+    <div class='col-xs-9'><%= f.select :user_id, User.where.not(role:1).map{ |u| [u.email, u.id] }, class: "form-control"  %></div>
   </div>
   
   <div class="col-xs-12 alert alert-danger" id='error-image' style='display: none;' role="alert" ></div>

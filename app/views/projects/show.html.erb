@@ -7,15 +7,15 @@
     <ul class="info-group">
         <li class='info-group-item'>
           <label>Nome do projeto:</label>
-    		  <%= @project.project_name %>
+    		  <%= @project.name %>
         </li>
         <li class='info-group-item'>
           <label>Descrição do projeto:</label>
-            <%= @project.project_description %>
+            <%= @project.description %>
         </li>
         <li class='info-group-item'>
           <label>Nome do gestor:</label>
-            <%= @project.manager_name %>
+            <%= @project.user.email %>
         </li>
     </ul>
   </div>

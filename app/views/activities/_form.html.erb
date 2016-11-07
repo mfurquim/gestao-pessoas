@@ -31,6 +31,17 @@
     <%= f.label :status %><br>
     <%= f.check_box :status %>
   </div>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.select :user_id, User.where.not(role:1).map{ |u| [u.email, u.id] } %>
+  </div>
+
+  <div class="field">
+    <%= f.label :project_id %><br>
+    <%= f.select :project_id, Project.all.map{|p| [p.name, p.id]} %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>
