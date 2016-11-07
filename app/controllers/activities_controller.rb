@@ -1,30 +1,36 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  after_action :verify_authorized
 
   # GET /activities
   # GET /activities.json
   def index
     @activities = Activity.all
+    authorize Activity
   end
 
   # GET /activities/1
   # GET /activities/1.json
   def show
+    authorize Activity, :index?
   end
 
   # GET /activities/new
   def new
     @activity = Activity.new
+    authorize Activity, :project_manager?
   end
 
   # GET /activities/1/edit
   def edit
+    authorize Activity, :project_manager?
   end
 
   # POST /activities
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    authorize Activity, :project_manager?
 
     respond_to do |format|
       if @activity.save
@@ -40,6 +46,7 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   # PATCH/PUT /activities/1.json
   def update
+    authorize Activity, :project_manager?
     respond_to do |format|
       if @activity.update(activity_params)
         format.html { redirect_to @activity, notice: 'Atividade atualizada com sucesso.' }
@@ -55,6 +62,7 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1.json
   def destroy
     @activity.destroy
+    authorize Activity, :project_manager?
     respond_to do |format|
       format.html { redirect_to activities_url, notice: 'Atividade deletada com sucesso.' }
       format.json { head :no_content }

@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   has_one :academic_information
   has_one :professional_profile
 
+  has_many :projects
+  has_many :activities 
+
   def role?(role)
     equals = false
     equals = role.to_s.eql? self.role.name unless self.role.nil?
